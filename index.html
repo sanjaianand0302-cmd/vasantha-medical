@@ -7,26 +7,27 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; }
 
-        /* Top Menu Bar (Apollo Style) */
+        /* Top Menu Bar */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
         .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; }
         .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; }
         .nav-menu a:hover { color: #00796b; }
         .login-btn { border: 1px solid #00796b; color: #00796b; padding: 6px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
 
-        /* Main Header & Search (Combined Style) */
+        /* Main Header & Search */
         header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
         h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
-        .search-container { max-width: 750px; margin: 25px auto 0; position: relative; }
-        .search-input { width: 100%; padding: 16px 20px; border: none; border-radius: 8px; font-size: 16px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none; }
-        .search-btn { position: absolute; right: 5px; top: 5px; bottom: 5px; background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 0 30px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
+        
+        .search-container { max-width: 750px; margin: 25px auto 0; display: flex; background: white; border-radius: 8px; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; }
+        .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
         .search-btn:hover { background-color: #e65100; }
 
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
 
-        /* Offer Banners (MedPlus Style) */
+        /* Offer Banners */
         .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
-        .banner { flex: 1; min-width: 300px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; }
+        .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; }
         .banner:hover { transform: translateY(-5px); }
         .b1 { background: linear-gradient(135deg, #e53935, #ef5350); }
         .b2 { background: linear-gradient(135deg, #43a047, #66bb6a); }
@@ -34,18 +35,28 @@
         .banner h3 { margin: 0 0 8px 0; font-size: 24px; font-weight: 800; }
         .banner p { margin: 0; font-size: 15px; font-weight: 500; }
 
-        /* Browse by Category (Apollo Style) */
+        /* Browse by Category */
         h2 { color: #333; font-size: 22px; margin-bottom: 20px; display: inline-block; border-bottom: 3px solid #00796b; padding-bottom: 5px; }
-        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 40px; }
-        .category-card { background: white; padding: 20px 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eaeaea; transition: all 0.3s ease; cursor: pointer; }
+        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .category-card { background: white; padding: 20px 10px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eaeaea; transition: all 0.3s ease; cursor: pointer; }
         .category-card:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: #00796b; transform: translateY(-3px); }
         .icon { font-size: 35px; margin-bottom: 12px; }
-        .category-card h4 { margin: 0; color: #444; font-size: 15px; font-weight: 600; }
+        .category-card h4 { margin: 0; color: #444; font-size: 14px; font-weight: 600; }
 
         /* Footer */
-        footer { text-align: center; margin-top: 50px; padding: 35px; background: white; border-top: 1px solid #eaeaea; color: #555; }
+        footer { text-align: center; margin-top: 50px; padding: 35px 20px; background: white; border-top: 1px solid #eaeaea; color: #555; }
         .call-btn { display: inline-block; background-color: #00796b; color: white; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 20px; transition: background 0.3s; }
-        .call-btn:hover { background-color: #004d40; }
+
+        /* 🔥 MOBILE RESPONSIVE FIXES 🔥 */
+        @media (max-width: 768px) {
+            .top-nav { flex-direction: column; text-align: center; gap: 15px; padding: 15px; }
+            .nav-menu { display: none; } /* மொபைலில் இடத்தை மிச்சப்படுத்த மெனுவை மறைத்துள்ளோம் */
+            header { padding: 30px 15px; }
+            h1 { font-size: 26px; }
+            .search-container { flex-direction: column; background: transparent; box-shadow: none; padding: 0; gap: 10px; }
+            .search-input { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; }
+            .search-btn { width: 100%; padding: 15px; border-radius: 8px; }
+        }
     </style>
 </head>
 <body>
@@ -68,7 +79,7 @@
     <header>
         <h1>Buy Medicines and Essentials</h1>
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search for Medicines, Health products, etc...">
+            <input type="text" class="search-input" placeholder="Search for Medicines, Health products...">
             <button class="search-btn">Search</button>
         </div>
     </header>
