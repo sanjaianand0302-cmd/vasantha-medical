@@ -6,68 +6,122 @@
     <title>Vasantha Medicals</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; }
-        
-        /* Modern Header without Image */
-        header { 
-            background: linear-gradient(135deg, #00796b, #004d40); 
-            color: white; 
-            text-align: center; 
-            padding: 50px 20px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
-        }
-        .logo-icon { font-size: 50px; margin-bottom: 10px; }
-        h1 { margin: 0; font-size: 36px; letter-spacing: 1px; }
-        .tagline { margin: 10px 0 0 0; font-size: 18px; font-style: italic; opacity: 0.9; }
-        
-        .container { max-width: 900px; margin: -30px auto 30px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
-        
-        /* Services Cards */
-        h2 { text-align: center; color: #00796b; margin-bottom: 30px; }
-        .services { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .card { background: #f9fbfb; border-left: 5px solid #00796b; padding: 25px; border-radius: 8px; text-align: center; flex: 1; min-width: 220px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: #00796b; margin-top: 0; font-size: 20px; }
-        .card p { color: #555; line-height: 1.5; }
-        
-        /* Contact Section */
-        .contact-info { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px dashed #ddd; }
-        .contact-info p { font-size: 16px; margin: 10px 0; }
-        .btn { display: inline-block; background-color: #d32f2f; color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px; font-size: 18px; font-weight: bold; margin-top: 20px; transition: background 0.3s ease; box-shadow: 0 4px 6px rgba(211, 47, 47, 0.3); }
-        .btn:hover { background-color: #b71c1c; transform: translateY(-2px); }
+
+        /* Top Menu Bar (Apollo Style) */
+        .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
+        .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; }
+        .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; }
+        .nav-menu a:hover { color: #00796b; }
+        .login-btn { border: 1px solid #00796b; color: #00796b; padding: 6px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+
+        /* Main Header & Search (Combined Style) */
+        header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
+        h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
+        .search-container { max-width: 750px; margin: 25px auto 0; position: relative; }
+        .search-input { width: 100%; padding: 16px 20px; border: none; border-radius: 8px; font-size: 16px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none; }
+        .search-btn { position: absolute; right: 5px; top: 5px; bottom: 5px; background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 0 30px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
+        .search-btn:hover { background-color: #e65100; }
+
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+
+        /* Offer Banners (MedPlus Style) */
+        .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
+        .banner { flex: 1; min-width: 300px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; }
+        .banner:hover { transform: translateY(-5px); }
+        .b1 { background: linear-gradient(135deg, #e53935, #ef5350); }
+        .b2 { background: linear-gradient(135deg, #43a047, #66bb6a); }
+        .b3 { background: linear-gradient(135deg, #fb8c00, #ffb74d); }
+        .banner h3 { margin: 0 0 8px 0; font-size: 24px; font-weight: 800; }
+        .banner p { margin: 0; font-size: 15px; font-weight: 500; }
+
+        /* Browse by Category (Apollo Style) */
+        h2 { color: #333; font-size: 22px; margin-bottom: 20px; display: inline-block; border-bottom: 3px solid #00796b; padding-bottom: 5px; }
+        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .category-card { background: white; padding: 20px 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eaeaea; transition: all 0.3s ease; cursor: pointer; }
+        .category-card:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: #00796b; transform: translateY(-3px); }
+        .icon { font-size: 35px; margin-bottom: 12px; }
+        .category-card h4 { margin: 0; color: #444; font-size: 15px; font-weight: 600; }
+
+        /* Footer */
+        footer { text-align: center; margin-top: 50px; padding: 35px; background: white; border-top: 1px solid #eaeaea; color: #555; }
+        .call-btn { display: inline-block; background-color: #00796b; color: white; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 20px; transition: background 0.3s; }
+        .call-btn:hover { background-color: #004d40; }
     </style>
 </head>
 <body>
 
+    <!-- Top Navigation Menu -->
+    <div class="top-nav">
+        <div style="font-size: 20px; font-weight: 900; color: #00796b;">VASANTHA MEDICALS</div>
+        <div class="nav-menu">
+            <a href="#">Buy Medicines</a>
+            <a href="#">Baby Care</a>
+            <a href="#">Personal Care</a>
+            <a href="#">Health Devices</a>
+        </div>
+        <div>
+            <a href="#" class="login-btn">Login</a>
+        </div>
+    </div>
+
+    <!-- Main Header & Search Bar -->
     <header>
-        <div class="logo-icon">⚕️💊</div>
-        <h1>Vasantha Medicals</h1>
-        <p class="tagline">Quality Medicines, Trusted Care</p>
+        <h1>Buy Medicines and Essentials</h1>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for Medicines, Health products, etc...">
+            <button class="search-btn">Search</button>
+        </div>
     </header>
 
     <div class="container">
-        <h2>Our Services</h2>
-        
-        <div class="services">
-            <div class="card">
-                <h3>💊 Medicines</h3>
-                <p>All kinds of Allopathic & General Medicines available.</p>
+        <!-- Colorful Offer Banners -->
+        <div class="banners">
+            <div class="banner b1">
+                <h3>FLAT 10% OFF</h3>
+                <p>On all allopathic medicines</p>
             </div>
-            <div class="card">
-                <h3>🧸 Baby Care</h3>
-                <p>Baby foods, diapers, lotions, and nutrition products.</p>
+            <div class="banner b2">
+                <h3>FREE DELIVERY</h3>
+                <p>For orders above ₹500</p>
             </div>
-            <div class="card">
-                <h3>🩹 First Aid</h3>
-                <p>Bandages, antiseptics, and essential first aid kits.</p>
+            <div class="banner b3">
+                <h3>BABY CARE SPECIAL</h3>
+                <p>Extra discounts on diapers</p>
             </div>
         </div>
 
-        <div class="contact-info">
-            <p><strong>📍 Address:</strong> 1/71, Pillayar Kovil Street, Pazhanthandalam</p>
-            <p><strong>⏰ Timings:</strong> 8:45 AM – 12:30 PM | 4:00 PM – 10:00 PM</p>
-            <a href="tel:9176663364" class="btn">📞 Call Now: +91 9176663364</a>
+        <!-- Browse by Categories -->
+        <h2>Browse by Health Conditions</h2>
+        <div class="categories">
+            <div class="category-card">
+                <div class="icon">🩸</div>
+                <h4>Diabetes Care</h4>
+            </div>
+            <div class="category-card">
+                <div class="icon">❤️</div>
+                <h4>Cardiac Care</h4>
+            </div>
+            <div class="category-card">
+                <div class="icon">👶</div>
+                <h4>Baby & Mom</h4>
+            </div>
+            <div class="category-card">
+                <div class="icon">🩹</div>
+                <h4>First Aid</h4>
+            </div>
+            <div class="category-card">
+                <div class="icon">💊</div>
+                <h4>Supplements</h4>
+            </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>📍 Address:</strong> 1/71, Pillayar Kovil Street, Pazhanthandalam</p>
+        <p><strong>⏰ Timings:</strong> 8:45 AM – 12:30 PM | 4:00 PM – 10:00 PM</p>
+        <a href="tel:9176663364" class="call-btn">📞 Call Now: +91 9176663364</a>
+    </footer>
 
 </body>
 </html>
