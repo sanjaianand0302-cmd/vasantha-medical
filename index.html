@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vasantha Medicals</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; overflow-x: hidden; }
 
         /* Top Menu Bar */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
@@ -18,8 +18,8 @@
         header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
         h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
         
-        .search-container { max-width: 750px; margin: 25px auto 0; display: flex; background: white; border-radius: 8px; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; }
+        .search-container { max-width: 750px; margin: 25px auto 0; display: flex; background: white; border-radius: 8px; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); box-sizing: border-box; }
+        .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; width: 100%; box-sizing: border-box; }
         .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
         .search-btn:hover { background-color: #e65100; }
 
@@ -27,7 +27,7 @@
 
         /* Offer Banners */
         .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
-        .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; }
+        .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; box-sizing: border-box; }
         .banner:hover { transform: translateY(-5px); }
         .b1 { background: linear-gradient(135deg, #e53935, #ef5350); }
         .b2 { background: linear-gradient(135deg, #43a047, #66bb6a); }
@@ -49,13 +49,16 @@
 
         /* 🔥 MOBILE RESPONSIVE FIXES 🔥 */
         @media (max-width: 768px) {
-            .top-nav { flex-direction: column; text-align: center; gap: 15px; padding: 15px; }
-            .nav-menu { display: none; } /* மொபைலில் இடத்தை மிச்சப்படுத்த மெனுவை மறைத்துள்ளோம் */
+            .top-nav { flex-direction: column; text-align: center; gap: 10px; padding: 15px; }
+            .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 5px; } /* மறைந்திருந்த மெனு மீண்டும் வந்துவிட்டது! */
+            .nav-menu a { font-size: 13px; }
+            
             header { padding: 30px 15px; }
             h1 { font-size: 26px; }
-            .search-container { flex-direction: column; background: transparent; box-shadow: none; padding: 0; gap: 10px; }
-            .search-input { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; }
-            .search-btn { width: 100%; padding: 15px; border-radius: 8px; }
+            
+            .search-container { flex-direction: column; background: transparent; box-shadow: none; padding: 0; gap: 10px; width: 100%; box-sizing: border-box; }
+            .search-input { width: 100%; box-sizing: border-box; padding: 15px; border-radius: 8px; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+            .search-btn { width: 100%; box-sizing: border-box; padding: 15px; border-radius: 8px; }
         }
     </style>
 </head>
