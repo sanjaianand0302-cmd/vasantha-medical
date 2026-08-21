@@ -14,14 +14,15 @@
         .nav-menu a:hover { color: #00796b; }
         .login-btn { border: 1px solid #00796b; color: #00796b; padding: 6px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
 
-        /* Main Header & Search */
+        /* Main Header & WhatsApp Button */
         header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
         h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
+        .tagline { font-size: 16px; opacity: 0.9; margin-top: 10px; }
         
-        .search-container { max-width: 750px; margin: 25px auto 0; display: flex; background: white; border-radius: 8px; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); box-sizing: border-box; }
-        .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; width: 100%; box-sizing: border-box; }
-        .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
-        .search-btn:hover { background-color: #e65100; }
+        .wa-container { margin: 30px auto 10px; }
+        .wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); background-color: #20b958; }
+        .wa-icon { font-size: 24px; }
 
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
 
@@ -50,15 +51,13 @@
         /* 🔥 MOBILE RESPONSIVE FIXES 🔥 */
         @media (max-width: 768px) {
             .top-nav { flex-direction: column; text-align: center; gap: 10px; padding: 15px; }
-            .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 5px; } /* மறைந்திருந்த மெனு மீண்டும் வந்துவிட்டது! */
+            .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 5px; } 
             .nav-menu a { font-size: 13px; }
             
-            header { padding: 30px 15px; }
+            header { padding: 40px 15px; }
             h1 { font-size: 26px; }
             
-            .search-container { flex-direction: column; background: transparent; box-shadow: none; padding: 0; gap: 10px; width: 100%; box-sizing: border-box; }
-            .search-input { width: 100%; box-sizing: border-box; padding: 15px; border-radius: 8px; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-            .search-btn { width: 100%; box-sizing: border-box; padding: 15px; border-radius: 8px; }
+            .wa-btn { width: 100%; box-sizing: border-box; font-size: 16px; padding: 15px 10px; }
         }
     </style>
 </head>
@@ -78,12 +77,16 @@
         </div>
     </div>
 
-    <!-- Main Header & Search Bar -->
+    <!-- Main Header & WhatsApp Order Button -->
     <header>
         <h1>Buy Medicines and Essentials</h1>
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search for Medicines, Health products...">
-            <button class="search-btn">Search</button>
+        <p class="tagline">Simply upload your prescription and get medicines delivered.</p>
+        
+        <div class="wa-container">
+            <!-- இதுதான் வாட்ஸ்அப் லிங்க்! -->
+            <a href="https://wa.me/919176663364?text=Hello%20Vasantha%20Medicals,%20I%20want%20to%20order%20medicines." target="_blank" class="wa-btn">
+                <span class="wa-icon">📲</span> Order via WhatsApp / Upload Prescription
+            </a>
         </div>
     </header>
 
