@@ -6,27 +6,19 @@
     <title>Vasantha Medicals</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; overflow-x: hidden; }
-
-        /* Top Menu Bar */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
         .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; }
         .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; transition: color 0.3s; }
         .nav-menu a:hover { color: #00796b; }
         .login-btn { border: 1px solid #00796b; color: #00796b; padding: 6px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
-
-        /* Main Header & Search Bar */
         header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
         h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
         .tagline { font-size: 16px; opacity: 0.9; margin-top: 10px; }
-        
         .search-container { max-width: 750px; margin: 25px auto 0; display: flex; background: white; border-radius: 8px; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); box-sizing: border-box; }
         .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; width: 100%; box-sizing: border-box; }
         .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
         .search-btn:hover { background-color: #e65100; }
-
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-
-        /* Offer Banners */
         .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
         .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; box-sizing: border-box; }
         .banner:hover { transform: translateY(-5px); }
@@ -35,132 +27,59 @@
         .b3 { background: linear-gradient(135deg, #fb8c00, #ffb74d); }
         .banner h3 { margin: 0 0 8px 0; font-size: 24px; font-weight: 800; }
         .banner p { margin: 0; font-size: 15px; font-weight: 500; }
-
-        /* Browse by Category */
         h2 { color: #333; font-size: 22px; margin-bottom: 20px; display: inline-block; border-bottom: 3px solid #00796b; padding-bottom: 5px; }
         .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 40px; }
         .category-card { background: white; padding: 20px 10px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eaeaea; transition: all 0.3s ease; cursor: pointer; height: 100%; box-sizing: border-box; }
         .category-card:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: #00796b; transform: translateY(-3px); }
         .icon { font-size: 35px; margin-bottom: 12px; }
         .category-card h4 { margin: 0; color: #444; font-size: 14px; font-weight: 600; }
-
-        /* Footer */
         footer { text-align: center; margin-top: 50px; padding: 35px 20px; background: white; border-top: 1px solid #eaeaea; color: #555; }
         .call-btn { display: inline-block; background-color: #00796b; color: white; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 20px; transition: background 0.3s; }
-
-        /* 🔥 FLOATING WHATSAPP BUTTON WITH ORIGINAL LOGO 🔥 */
         .float-wa { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 0px 4px 15px rgba(0,0,0,0.2); z-index: 100; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; text-decoration: none; }
         .float-wa:hover { transform: scale(1.1); background-color: #20b958; }
         .float-wa svg { width: 35px; height: 35px; fill: white; }
-
-        /* 🔥 MOBILE RESPONSIVE FIXES 🔥 */
-        @media (max-width: 768px) {
-            .top-nav { flex-direction: column; text-align: center; gap: 10px; padding: 15px; }
-            .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 5px; } 
-            .nav-menu a { font-size: 13px; }
-            
-            header { padding: 40px 15px; }
-            h1 { font-size: 26px; }
-            
-            .search-container { flex-direction: column; background: transparent; box-shadow: none; padding: 0; gap: 10px; width: 100%; box-sizing: border-box; }
-            .search-input { width: 100%; box-sizing: border-box; padding: 15px; border-radius: 8px; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-            .search-btn { width: 100%; box-sizing: border-box; padding: 15px; border-radius: 8px; }
-            
-            .float-wa { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-            .float-wa svg { width: 30px; height: 30px; }
-        }
     </style>
 </head>
 <body>
-
-    <!-- Top Navigation Menu -->
     <div class="top-nav">
         <div style="font-size: 20px; font-weight: 900; color: #00796b;">VASANTHA MEDICALS</div>
         <div class="nav-menu">
+            <a href="index.html">Home</a>
             <a href="index.html">Buy Medicines</a>
-            <!-- இங்கே பேபி கேர் பேஜுக்கு லிங்க் கொடுத்துள்ளோம் 👇 -->
-            <a href="baby-care.html" style="color: #00796b; font-weight: 800;">Baby Care</a>
-            <a href="#">Personal Care</a>
-            <a href="#">Health Devices</a>
+            <a href="baby-care.html">Baby Care</a>
+            <a href="contact.html">Contact Us</a>
         </div>
-        <div>
-            <a href="#" class="login-btn">Login</a>
-        </div>
+        <div><a href="#" class="login-btn">Login</a></div>
     </div>
-
-    <!-- Main Header & Search Bar -->
     <header>
         <h1>Buy Medicines and Essentials</h1>
         <p class="tagline">Quality Medicines, Trusted Care</p>
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search for Medicines, Health products...">
+            <input type="text" class="search-input" placeholder="Search for Medicines...">
             <button class="search-btn">Search</button>
         </div>
     </header>
-
     <div class="container">
-        <!-- Colorful Offer Banners -->
         <div class="banners">
-            <div class="banner b1">
-                <h3>FLAT 10% OFF</h3>
-                <p>On all allopathic medicines</p>
-            </div>
-            <div class="banner b2">
-                <h3>FREE DELIVERY</h3>
-                <p>For orders above ₹500</p>
-            </div>
-            <a href="baby-care.html" style="text-decoration: none;">
-                <div class="banner b3">
-                    <h3>BABY CARE SPECIAL</h3>
-                    <p>Extra discounts on diapers</p>
-                </div>
-            </a>
+            <div class="banner b1"><h3>FLAT 10% OFF</h3><p>On all allopathic medicines</p></div>
+            <div class="banner b2"><h3>FREE DELIVERY</h3><p>For orders above ₹500</p></div>
+            <a href="baby-care.html" style="text-decoration: none;"><div class="banner b3"><h3>BABY CARE SPECIAL</h3><p>Extra discounts on diapers</p></div></a>
         </div>
-
-        <!-- Browse by Categories -->
         <h2>Browse by Health Conditions</h2>
         <div class="categories">
-            <div class="category-card">
-                <div class="icon">🩸</div>
-                <h4>Diabetes Care</h4>
-            </div>
-            <div class="category-card">
-                <div class="icon">❤️</div>
-                <h4>Cardiac Care</h4>
-            </div>
-            
-            <!-- இங்கே பேபி கேர் பாக்ஸ்க்கு லிங்க் கொடுத்துள்ளோம் 👇 -->
-            <a href="baby-care.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="category-card">
-                    <div class="icon">👶</div>
-                    <h4>Baby & Mom</h4>
-                </div>
-            </a>
-
-            <div class="category-card">
-                <div class="icon">🩹</div>
-                <h4>First Aid</h4>
-            </div>
-            <div class="category-card">
-                <div class="icon">💊</div>
-                <h4>Supplements</h4>
-            </div>
+            <div class="category-card"><div class="icon">🩸</div><h4>Diabetes Care</h4></div>
+            <div class="category-card"><div class="icon">❤️</div><h4>Cardiac Care</h4></div>
+            <a href="baby-care.html" style="text-decoration: none; color: inherit; display: block;"><div class="category-card"><div class="icon">👶</div><h4>Baby & Mom</h4></div></a>
+            <div class="category-card"><div class="icon">🩹</div><h4>First Aid</h4></div>
+            <div class="category-card"><div class="icon">💊</div><h4>Supplements</h4></div>
         </div>
     </div>
-
-    <!-- Footer -->
     <footer>
         <p><strong>📍 Address:</strong> 1/71, Pillayar Kovil Street, Pazhanthandalam</p>
-        <p><strong>⏰ Timings:</strong> 8:45 AM – 12:30 PM | 4:00 PM – 10:00 PM</p>
         <a href="tel:9176663364" class="call-btn">📞 Call Now: +91 9176663364</a>
     </footer>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919176663364?text=Hello%20Vasantha%20Medicals,%20I%20want%20to%20order%20medicines." target="_blank" class="float-wa">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-        </svg>
+    <a href="https://wa.me/919176663364" target="_blank" class="float-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
     </a>
-
 </body>
 </html>
