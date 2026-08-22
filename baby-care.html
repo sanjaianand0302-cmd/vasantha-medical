@@ -43,7 +43,6 @@
 </head>
 <body>
 
-    <!-- Updated Menu with Cart Icon -->
     <div class="top-nav">
         <div class="logo">VASANTHA MEDICALS</div>
         <div class="nav-menu">
@@ -136,36 +135,39 @@
                 <div class="product-price">₹ 660.00</div>
                 <button class="buy-btn" onclick="addToCart('PediaSure Health Drink', 660)">Add to Cart</button>
             </div>
+            
+            <!-- குறியீடு சரி செய்யப்பட்டது 👇 -->
             <div class="product-card">
                 <div class="product-icon">🧼</div>
                 <div class="product-title">Johnson's Baby Soap (75g)</div>
                 <div class="product-price">₹ 65.00</div>
-                <button class="buy-btn" onclick="addToCart('Johnson\\'s Baby Soap', 65)">Add to Cart</button>
+                <button class="buy-btn" onclick="addToCart('Johnsons Baby Soap', 65)">Add to Cart</button>
             </div>
             <div class="product-card">
                 <div class="product-icon">☁️</div>
                 <div class="product-title">Johnson's Baby Powder (100g)</div>
                 <div class="product-price">₹ 125.00</div>
-                <button class="buy-btn" onclick="addToCart('Johnson\\'s Baby Powder', 125)">Add to Cart</button>
+                <button class="buy-btn" onclick="addToCart('Johnsons Baby Powder', 125)">Add to Cart</button>
             </div>
             <div class="product-card">
                 <div class="product-icon">🧴</div>
                 <div class="product-title">Johnson's Baby Lotion (50ml)</div>
                 <div class="product-price">₹ 85.00</div>
-                <button class="buy-btn" onclick="addToCart('Johnson\\'s Baby Lotion', 85)">Add to Cart</button>
+                <button class="buy-btn" onclick="addToCart('Johnsons Baby Lotion', 85)">Add to Cart</button>
             </div>
             <div class="product-card">
                 <div class="product-icon">🌿</div>
                 <div class="product-title">Johnson's Baby Hair Oil with Avocado (60ml)</div>
                 <div class="product-price">₹ 75.00</div>
-                <button class="buy-btn" onclick="addToCart('Johnson\\'s Baby Hair Oil', 75)">Add to Cart</button>
+                <button class="buy-btn" onclick="addToCart('Johnsons Baby Hair Oil', 75)">Add to Cart</button>
             </div>
             <div class="product-card">
                 <div class="product-icon">🚿</div>
                 <div class="product-title">Johnson's Baby Shampoo with Aloe (50ml)</div>
                 <div class="product-price">₹ 90.00</div>
-                <button class="buy-btn" onclick="addToCart('Johnson\\'s Baby Shampoo', 90)">Add to Cart</button>
+                <button class="buy-btn" onclick="addToCart('Johnsons Baby Shampoo', 90)">Add to Cart</button>
             </div>
+            
             <div class="product-card">
                 <div class="product-icon">🧴</div>
                 <div class="product-title">Himalaya Gentle Baby Shampoo</div>
@@ -190,25 +192,19 @@
 
     <!-- JavaScript for Add to Cart functionality -->
     <script>
-        // பிரவுசர் மெமரில இருந்து பழைய கார்ட் லிஸ்ட்டை எடுக்கும்
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // பேஜ் ஓபன் ஆனதும், மேல கார்ட் கவுண்ட்டை அப்டேட் பண்ணும்
         function updateCartCount() {
             document.getElementById('cart-count').innerText = cart.length;
         }
 
-        // பட்டனை அழுத்துனதும் கார்ட்டுல ஐட்டம் சேரும்
         function addToCart(productName, productPrice) {
             cart.push({ name: productName, price: productPrice });
-            localStorage.setItem('cart', JSON.stringify(cart)); // சேவ் பண்ணுது
-            updateCartCount(); // நம்பரை மாத்துது
-            
-            // கஸ்டமருக்கு ஒரு சின்ன மெசேஜ்
+            localStorage.setItem('cart', JSON.stringify(cart)); 
+            updateCartCount(); 
             alert(productName + " added to your cart successfully! 🛒");
         }
 
-        // பேஜ் லோட் ஆனதும் நம்பரை காட்டணும்
         window.onload = updateCartCount;
     </script>
 
