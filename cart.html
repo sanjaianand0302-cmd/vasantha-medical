@@ -7,7 +7,6 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; }
         
-        /* Top Menu Bar */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
         .logo { font-size: 22px; font-weight: 900; color: #00796b; text-align: center; }
         .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
@@ -19,7 +18,6 @@
 
         .container { max-width: 800px; margin: 40px auto; padding: 0 20px; min-height: 400px; }
         
-        /* Cart Styles */
         .cart-item { display: flex; justify-content: space-between; background: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eaeaea; align-items: center; }
         .item-name { font-weight: bold; font-size: 16px; color: #333; }
         .item-price { font-weight: 900; color: #e91e63; }
@@ -54,39 +52,39 @@
         <h1>🛒 Your Shopping Cart</h1>
     </header>
 
-    <div class="container" id="cart-container">
-        <!-- Cart items will be loaded here by JavaScript -->
-    </div>
+    <!-- இந்த பாக்ஸ் தான் மிஸ் ஆகிடுச்சு -->
+    <div class="container" id="cart-container"></div>
 
     <script>
         function displayCart() {
-            let container = document.getElementById('cart-container');
             let cartCount = document.getElementById('cart-count');
             let cart = [];
 
-            // பிரவுசர் மெமரில உடைந்த டேட்டா இருந்தா அதை ஆட்டோமேட்டிக்கா சரி பண்ணும் கோடு (Bulletproof)
             try {
                 let storedData = localStorage.getItem('cart');
                 if (storedData) {
-                    let parsedData = JSON.parse(storedData);
-                    if (Array.isArray(parsedData)) {
-                        cart = parsedData;
-                    } else {
-                        localStorage.removeItem('cart'); // உடைந்த டேட்டாவை அழிச்சிடும்
-                    }
+                    cart = JSON.parse(storedData);
+                    if (!Array.isArray(cart)) cart = [];
                 }
             } catch (error) {
-                localStorage.removeItem('cart'); // எரர் வந்தா டேட்டாவை அழிச்சிடும்
+                cart = [];
             }
 
             if (cartCount) {
                 cartCount.innerText = cart.length;
             }
 
+            // MAGIC CODE: பெட்டி இல்லனா, கோடே தானா உருவாக்கிடும்!
+            let container = document.getElementById('cart-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'cart-container';
+                container.className = 'container';
+                document.body.appendChild(container);
+            }
+
             if (cart.length === 0) {
-                if (container) {
-                    container.innerHTML = '<div class="empty-cart">Your cart is empty! 🛍️<br><br><a href="index.html" style="color:#00796b; font-weight:bold; text-decoration:none;">Go back to shopping</a></div>';
-                }
+                container.innerHTML = '<div class="empty-cart">Your cart is empty! 🛍️<br><br><a href="baby-care.html" style="color:#00796b; font-weight:bold; text-decoration:none;">Go back to shopping</a></div>';
                 return;
             }
 
@@ -114,9 +112,7 @@
                 </div>
             `;
             
-            if (container) {
-                container.innerHTML = html;
-            }
+            container.innerHTML = html;
         }
 
         function removeItem(index) {
