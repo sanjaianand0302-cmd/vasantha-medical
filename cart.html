@@ -60,22 +60,27 @@
 
     <script>
         function displayCart() {
+            let container = document.getElementById('cart-container');
+            let cartCount = document.getElementById('cart-count');
             let cart = [];
+
+            // பிரவுசர் மெமரில உடைந்த டேட்டா இருந்தா அதை ஆட்டோமேட்டிக்கா சரி பண்ணும் கோடு (Bulletproof)
             try {
-                cart = JSON.parse(localStorage.getItem('cart')) || [];
-            } catch (e) {
-                cart = [];
+                let storedData = localStorage.getItem('cart');
+                if (storedData) {
+                    let parsedData = JSON.parse(storedData);
+                    if (Array.isArray(parsedData)) {
+                        cart = parsedData;
+                    } else {
+                        localStorage.removeItem('cart'); // உடைந்த டேட்டாவை அழிச்சிடும்
+                    }
+                }
+            } catch (error) {
+                localStorage.removeItem('cart'); // எரர் வந்தா டேட்டாவை அழிச்சிடும்
             }
 
-            // MAGIC LINE: இது பிரவுசர்ல இருக்கிற தப்பான டேட்டாவை ஆட்டோமேட்டிக்கா அழிச்சிடும்
-            cart = cart.filter(item => item && item.name && item.price);
-            localStorage.setItem('cart', JSON.stringify(cart)); 
-
-            let container = document.getElementById('cart-container');
-            let countElement = document.getElementById('cart-count');
-            
-            if (countElement) {
-                countElement.innerText = cart.length;
+            if (cartCount) {
+                cartCount.innerText = cart.length;
             }
 
             if (cart.length === 0) {
@@ -116,8 +121,10 @@
 
         function removeItem(index) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
+            if(Array.isArray(cart)) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
             displayCart();
         }
 
@@ -128,7 +135,7 @@
 
         function sendToWhatsApp() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if(cart.length === 0) return;
+            if(!Array.isArray(cart) || cart.length === 0) return;
             
             let message = "Hello Vasantha Medicals! 👋\nI would like to order:\n\n";
             let total = 0;
