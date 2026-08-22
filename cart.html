@@ -59,16 +59,29 @@
     </div>
 
     <script>
-        // localStorage ல இருந்து கரெக்ட்டா 'cart' ங்கற பேரை வெச்சே எடுக்கும்
         function displayCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let container = document.getElementById('cart-container');
-            
-            // மெனுல இருக்குற கவுண்ட்டை அப்டேட் பண்ணுது
-            document.getElementById('cart-count').innerText = cart.length;
+            let cart = [];
+            // தப்பான டேட்டா இருந்தா கிராஷ் ஆகாம இருக்க பாதுகாப்பான கோடு
+            try {
+                cart = JSON.parse(localStorage.getItem('cart')) || [];
+            } catch (error) {
+                cart = []; 
+                localStorage.removeItem('cart');
+            }
 
+            let container = document.getElementById('cart-container');
+            let countElement = document.getElementById('cart-count');
+            
+            // மெனுல ID இருந்தா மட்டும் நம்பரை மாத்தும் (Crash ஆகாது)
+            if (countElement) {
+                countElement.innerText = cart.length;
+            }
+
+            // கார்ட் காலியா இருந்தா இந்த மெசேஜ் காட்டும்
             if (cart.length === 0) {
-                container.innerHTML = '<div class="empty-cart">Your cart is empty! 🛍️<br><br><a href="index.html" style="color:#00796b; font-weight:bold; text-decoration:none;">Go back to shopping</a></div>';
+                if (container) {
+                    container.innerHTML = '<div class="empty-cart">Your cart is empty! 🛍️<br><br><a href="index.html" style="color:#00796b; font-weight:bold; text-decoration:none;">Go back to shopping</a></div>';
+                }
                 return;
             }
 
@@ -95,11 +108,15 @@
                     <button onclick="clearCart()" style="background:transparent; border:none; color:#888; text-decoration:underline; cursor:pointer; margin-top:10px; display:block; width:100%;">Clear Cart</button>
                 </div>
             `;
-            container.innerHTML = html;
+            
+            if (container) {
+                container.innerHTML = html;
+            }
         }
 
         function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cart = [];
+            try { cart = JSON.parse(localStorage.getItem('cart')) || []; } catch(e) {}
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             displayCart();
@@ -111,7 +128,8 @@
         }
 
         function sendToWhatsApp() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cart = [];
+            try { cart = JSON.parse(localStorage.getItem('cart')) || []; } catch(e) {}
             if(cart.length === 0) return;
             
             let message = "Hello Vasantha Medicals! 👋\nI would like to order:\n\n";
