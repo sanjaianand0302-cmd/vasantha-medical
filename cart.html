@@ -59,11 +59,12 @@
     </div>
 
     <script>
-        // Local Storage ல இருந்து பொருட்களை எடுக்கும் கோடு
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+        // localStorage ல இருந்து கரெக்ட்டா 'cart' ங்கற பேரை வெச்சே எடுக்கும்
         function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let container = document.getElementById('cart-container');
+            
+            // மெனுல இருக்குற கவுண்ட்டை அப்டேட் பண்ணுது
             document.getElementById('cart-count').innerText = cart.length;
 
             if (cart.length === 0) {
@@ -98,20 +99,22 @@
         }
 
         function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             displayCart();
         }
 
         function clearCart() {
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.removeItem('cart');
             displayCart();
         }
 
         function sendToWhatsApp() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             if(cart.length === 0) return;
-            let message = "Hello Vasantha Medicals! 👋\nI would like to order the following items:\n\n";
+            
+            let message = "Hello Vasantha Medicals! 👋\nI would like to order:\n\n";
             let total = 0;
             
             cart.forEach((item, i) => {
@@ -121,14 +124,10 @@
             
             message += \n*Total Amount: ₹${total}*\n\nPlease confirm availability!;
             
-            let waLink = "https://wa.me/919176663364?text=" + encodeURIComponent(message);
-            window.open(waLink, "_blank");
-            
-            // ஆர்டர் அனுப்புனதும் கார்ட்டை காலி பண்ணிடலாம்
+            window.open("https://wa.me/919176663364?text=" + encodeURIComponent(message), "_blank");
             clearCart();
         }
 
-        // பேஜ் லோட் ஆகும்போது கார்ட்டை காட்டும்
         window.onload = displayCart;
     </script>
 
