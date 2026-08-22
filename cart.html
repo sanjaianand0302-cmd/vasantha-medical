@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Vasantha Medicals</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; }
+        
+        /* Top Menu Bar */
+        .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 22px; font-weight: 900; color: #00796b; text-align: center; }
+        .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
+        .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 15px; }
+        .nav-menu a:hover { color: #00796b; }
+        
+        header { background: #f57c00; color: white; text-align: center; padding: 30px 20px; }
+        h1 { margin: 0; font-size: 28px; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; min-height: 400px; }
+        
+        /* Cart Styles */
+        .cart-item { display: flex; justify-content: space-between; background: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eaeaea; align-items: center; }
+        .item-name { font-weight: bold; font-size: 16px; color: #333; }
+        .item-price { font-weight: 900; color: #e91e63; }
+        .remove-btn { background: #ff4c4c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 12px; }
+        
+        .cart-total { text-align: right; font-size: 20px; font-weight: bold; margin-top: 20px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .checkout-btn { display: inline-block; background-color: #25D366; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 16px; margin-top: 15px; cursor: pointer; border: none; width: 100%; box-sizing: border-box; }
+        .checkout-btn:hover { background-color: #20b958; }
+        .empty-cart { text-align: center; font-size: 18px; color: #888; margin-top: 50px; }
+
+        @media (max-width: 768px) {
+            .top-nav { flex-direction: column; text-align: center; }
+            .logo { width: 100%; margin-bottom: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <div class="logo">VASANTHA MEDICALS</div>
+        <div class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html">Buy Medicines</a>
+            <a href="baby-care.html">Baby Care</a>
+            <a href="first-aid.html">First Aid</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="cart.html" style="color: #f57c00; font-weight: 800;">🛒 Cart (<span id="cart-count">0</span>)</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>🛒 Your Shopping Cart</h1>
+    </header>
+
+    <div class="container" id="cart-container">
+        <!-- Cart items will be loaded here by JavaScript -->
+    </div>
+
+    <script>
+        // Local Storage ல இருந்து பொருட்களை எடுக்கும் கோடு
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCart() {
+            let container = document.getElementById('cart-container');
+            document.getElementById('cart-count').innerText = cart.length;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="empty-cart">Your cart is empty! 🛍️<br><br><a href="index.html" style="color:#00796b; font-weight:bold; text-decoration:none;">Go back to shopping</a></div>';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="item-name">${item.name}</div>
+                        <div>
+                            <span class="item-price">₹ ${item.price}.00</span>
+                            <button class="remove-btn" onclick="removeItem(${index})">X</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="cart-total">
+                    Total Amount: <span style="color:#e91e63;">₹ ${total}.00</span>
+                    <button class="checkout-btn" onclick="sendToWhatsApp()">Send Order to WhatsApp 🟢</button>
+                    <button onclick="clearCart()" style="background:transparent; border:none; color:#888; text-decoration:underline; cursor:pointer; margin-top:10px; display:block; width:100%;">Clear Cart</button>
+                </div>
+            `;
+            container.innerHTML = html;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function sendToWhatsApp() {
+            if(cart.length === 0) return;
+            let message = "Hello Vasantha Medicals! 👋\nI would like to order the following items:\n\n";
+            let total = 0;
+            
+            cart.forEach((item, i) => {
+                message += ${i+1}. ${item.name} - ₹${item.price}\n;
+                total += item.price;
+            });
+            
+            message += \n*Total Amount: ₹${total}*\n\nPlease confirm availability!;
+            
+            let waLink = "https://wa.me/919176663364?text=" + encodeURIComponent(message);
+            window.open(waLink, "_blank");
+            
+            // ஆர்டர் அனுப்புனதும் கார்ட்டை காலி பண்ணிடலாம்
+            clearCart();
+        }
+
+        // பேஜ் லோட் ஆகும்போது கார்ட்டை காட்டும்
+        window.onload = displayCart;
+    </script>
+
+</body>
+</html>
