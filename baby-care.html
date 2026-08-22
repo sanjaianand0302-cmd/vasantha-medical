@@ -13,8 +13,8 @@
         .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; }
         .nav-menu a:hover { color: #00796b; }
         
-        /* Header */
-        header { background: #ffb74d; color: #333; text-align: center; padding: 40px 20px; border-bottom: 5px solid #f57c00; }
+        /* Header - Baby Care (Pink Theme) */
+        header { background: #e91e63; color: white; text-align: center; padding: 40px 20px; border-bottom: 5px solid #c2185b; }
         h1 { margin: 0; font-size: 32px; }
 
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
@@ -22,10 +22,10 @@
         /* Product Grid */
         .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .product-card { background: white; padding: 25px 15px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eaeaea; transition: transform 0.3s ease; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-color: #ffb74d; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-color: #e91e63; }
         .product-icon { font-size: 50px; margin-bottom: 15px; }
-        .product-title { font-size: 18px; font-weight: bold; margin: 10px 0; color: #333; height: 45px; }
-        .product-price { font-size: 18px; color: #d32f2f; font-weight: 900; margin-bottom: 20px; }
+        .product-title { font-size: 16px; font-weight: bold; margin: 10px 0; color: #333; height: 50px; }
+        .product-price { font-size: 18px; color: #e91e63; font-weight: 900; margin-bottom: 20px; }
         .buy-btn { display: inline-block; background-color: #25D366; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 14px; transition: background 0.3s; box-shadow: 0 4px 10px rgba(37,211,102,0.3); }
         .buy-btn:hover { background-color: #20b958; }
 
@@ -33,13 +33,6 @@
         .float-wa { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0px 4px 15px rgba(0,0,0,0.2); z-index: 100; transition: transform 0.3s ease; }
         .float-wa:hover { transform: scale(1.1); }
         .float-wa svg { width: 35px; height: 35px; fill: white; }
-
-        @media (max-width: 768px) {
-            .top-nav { flex-direction: column; text-align: center; gap: 10px; padding: 15px; }
-            .nav-menu { justify-content: center; margin-bottom: 5px; }
-            .float-wa { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-            .float-wa svg { width: 30px; height: 30px; }
-        }
     </style>
 </head>
 <body>
@@ -48,41 +41,73 @@
         <div style="font-size: 20px; font-weight: 900; color: #00796b;">VASANTHA MEDICALS</div>
         <div class="nav-menu">
             <a href="index.html">Home</a>
-            <a href="index.html">Buy Medicines</a>
-            <a href="baby-care.html" style="color: #f57c00; border-bottom: 2px solid #f57c00;">Baby Care</a>
+            <a href="baby-care.html" style="color: #e91e63; border-bottom: 2px solid #e91e63;">Baby Care</a>
+            <a href="first-aid.html">First Aid</a>
+            <a href="contact.html">Contact Us</a>
         </div>
     </div>
 
     <header>
-        <h1>🧸 Baby Care Essentials</h1>
-        <p>Best care and products for your little ones.</p>
+        <h1>👶 Baby Care & Nutrition</h1>
+        <p>Premium baby products from trusted brands like Johnson's, Himalaya & Nestle.</p>
     </header>
 
     <div class="container">
         <div class="products">
+            <!-- Johnson's Products -->
             <div class="product-card">
-                <div class="product-icon">🍼</div>
-                <div class="product-title">Nestle Cerelac (Wheat Apple)</div>
-                <div class="product-price">₹ 285.00</div>
-                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Nestle%20Cerelac." target="_blank" class="buy-btn">Order on WhatsApp</a>
-            </div>
-            <div class="product-card">
-                <div class="product-icon">👶</div>
-                <div class="product-title">Pampers Active Baby (L)</div>
-                <div class="product-price">₹ 499.00</div>
-                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Pampers." target="_blank" class="buy-btn">Order on WhatsApp</a>
+                <div class="product-icon">🧼</div>
+                <div class="product-title">Johnson's Baby Soap (75g)</div>
+                <div class="product-price">₹ 65.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Johnson's%20Baby%20Soap." target="_blank" class="buy-btn">Order on WhatsApp</a>
             </div>
             <div class="product-card">
                 <div class="product-icon">🧴</div>
-                <div class="product-title">Himalaya Baby Lotion</div>
-                <div class="product-price">₹ 150.00</div>
-                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Himalaya%20Baby%20Lotion." target="_blank" class="buy-btn">Order on WhatsApp</a>
+                <div class="product-title">Johnson's Baby Powder & Lotion</div>
+                <div class="product-price">₹ 110.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Johnson's%20Baby%20Powder." target="_blank" class="buy-btn">Order on WhatsApp</a>
+            </div>
+            
+            <!-- Himalaya Products -->
+            <div class="product-card">
+                <div class="product-icon">🌿</div>
+                <div class="product-title">Himalaya Baby Massage Oil (100ml)</div>
+                <div class="product-price">₹ 120.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Himalaya%20Baby%20Massage%20Oil." target="_blank" class="buy-btn">Order on WhatsApp</a>
             </div>
             <div class="product-card">
-                <div class="product-icon">🧼</div>
-                <div class="product-title">Johnson's Baby Soap</div>
-                <div class="product-price">₹ 65.00</div>
-                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Johnson's%20Baby%20Soap." target="_blank" class="buy-btn">Order on WhatsApp</a>
+                <div class="product-icon">🧴</div>
+                <div class="product-title">Himalaya Gentle Baby Shampoo</div>
+                <div class="product-price">₹ 95.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Himalaya%20Baby%20Shampoo." target="_blank" class="buy-btn">Order on WhatsApp</a>
+            </div>
+
+            <!-- Nestle Baby Food -->
+            <div class="product-card">
+                <div class="product-icon">🥣</div>
+                <div class="product-title">Nestle Cerelac (Wheat / Apple / Veg)</div>
+                <div class="product-price">₹ 290.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Nestle%20Cerelac." target="_blank" class="buy-btn">Order on WhatsApp</a>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🍼</div>
+                <div class="product-title">Nestle NAN PRO (Stage 1, 2, 3)</div>
+                <div class="product-price">₹ 750.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Nestle%20NAN%20PRO." target="_blank" class="buy-btn">Order on WhatsApp</a>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🍼</div>
+                <div class="product-title">Nestle Lactogen PRO 1</div>
+                <div class="product-price">₹ 420.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20Lactogen%20PRO%201." target="_blank" class="buy-btn">Order on WhatsApp</a>
+            </div>
+
+            <!-- Supplements/Nutrition -->
+            <div class="product-card">
+                <div class="product-icon">🥛</div>
+                <div class="product-title">PediaSure Health Drink</div>
+                <div class="product-price">₹ 650.00</div>
+                <a href="https://wa.me/919176663364?text=Hi,%20I%20want%20to%20order%20PediaSure." target="_blank" class="buy-btn">Order on WhatsApp</a>
             </div>
         </div>
     </div>
