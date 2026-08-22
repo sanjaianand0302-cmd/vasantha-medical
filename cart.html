@@ -61,23 +61,23 @@
     <script>
         function displayCart() {
             let cart = [];
-            // தப்பான டேட்டா இருந்தா கிராஷ் ஆகாம இருக்க பாதுகாப்பான கோடு
             try {
                 cart = JSON.parse(localStorage.getItem('cart')) || [];
-            } catch (error) {
-                cart = []; 
-                localStorage.removeItem('cart');
+            } catch (e) {
+                cart = [];
             }
+
+            // MAGIC LINE: இது பிரவுசர்ல இருக்கிற தப்பான டேட்டாவை ஆட்டோமேட்டிக்கா அழிச்சிடும்
+            cart = cart.filter(item => item && item.name && item.price);
+            localStorage.setItem('cart', JSON.stringify(cart)); 
 
             let container = document.getElementById('cart-container');
             let countElement = document.getElementById('cart-count');
             
-            // மெனுல ID இருந்தா மட்டும் நம்பரை மாத்தும் (Crash ஆகாது)
             if (countElement) {
                 countElement.innerText = cart.length;
             }
 
-            // கார்ட் காலியா இருந்தா இந்த மெசேஜ் காட்டும்
             if (cart.length === 0) {
                 if (container) {
                     container.innerHTML = '<div class="empty-cart">Your cart is empty! 🛍️<br><br><a href="index.html" style="color:#00796b; font-weight:bold; text-decoration:none;">Go back to shopping</a></div>';
@@ -115,8 +115,7 @@
         }
 
         function removeItem(index) {
-            let cart = [];
-            try { cart = JSON.parse(localStorage.getItem('cart')) || []; } catch(e) {}
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             displayCart();
@@ -128,8 +127,7 @@
         }
 
         function sendToWhatsApp() {
-            let cart = [];
-            try { cart = JSON.parse(localStorage.getItem('cart')) || []; } catch(e) {}
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             if(cart.length === 0) return;
             
             let message = "Hello Vasantha Medicals! 👋\nI would like to order:\n\n";
