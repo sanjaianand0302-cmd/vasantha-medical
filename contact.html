@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Vasantha Medicals</title>
     <style>
+        /* உங்க ஹோம் பேஜ்ல இருந்த அதே ஒரிஜினல் ஸ்டைல் */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; overflow-x: hidden; }
         
-        /* Top Menu Bar - Same as Home Page */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 15px; }
         .logo { font-size: 22px; font-weight: 900; color: #00796b; letter-spacing: 0.5px; text-align: center; }
         .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
         .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; transition: color 0.3s; }
         .nav-menu a:hover { color: #00796b; }
         
-        header { background: #00796b; color: white; text-align: center; padding: 40px 20px; }
-        h1 { margin: 0; font-size: 32px; }
+        header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
+        h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
+        .tagline { font-size: 16px; opacity: 0.9; margin-top: 10px; }
         
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 30px; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; text-align: center; }
         
-        .contact-card { flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eaeaea; text-align: center; }
-        .contact-card h2 { color: #00796b; margin-top: 0; }
-        .icon { font-size: 40px; margin-bottom: 15px; }
+        /* சிம்பிளான காண்டாக்ட் பாக்ஸ் */
+        .contact-box { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; }
+        .contact-box h2 { color: #00796b; margin-top: 0; font-size: 24px; border-bottom: 2px solid #00796b; display: inline-block; padding-bottom: 5px; }
+        .contact-box p { font-size: 18px; line-height: 1.6; color: #444; }
         
-        .prescription-btn { display: inline-block; background-color: #25D366; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; margin-top: 20px; transition: 0.3s; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
-        .prescription-btn:hover { background-color: #20b958; transform: translateY(-3px); }
-        
-        .map-container { flex: 1; min-width: 300px; background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
-        iframe { width: 100%; height: 300px; border: none; border-radius: 8px; }
+        .wa-btn { display: inline-block; background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 20px; transition: 0.3s; font-size: 16px; border: none; cursor: pointer; }
+        .wa-btn:hover { background-color: #20b958; }
 
         footer { text-align: center; margin-top: 50px; padding: 35px 20px; background: white; border-top: 1px solid #eaeaea; color: #555; }
         
@@ -50,49 +49,37 @@
             <a href="cart.html" style="color: #f57c00; font-weight: 800;">🛒 Cart (<span id="cart-count">0</span>)</a>
         </div>
     </div>
-
+    
     <header>
-        <h1>Get in Touch with Us 📞</h1>
-        <p>We are here to help you with all your medical needs.</p>
+        <h1>Contact Us</h1>
+        <p class="tagline">We are always here to help you with your medical needs.</p>
     </header>
 
     <div class="container">
-        <!-- Contact Details -->
-        <div class="contact-card">
-            <div class="icon">📍</div>
-            <h2>Visit Our Store</h2>
-            <p style="font-size: 18px; line-height: 1.6; color: #555;">
+        <div class="contact-box">
+            <h2>📍 Shop Address</h2>
+            <p>
                 <strong>Vasantha Medicals</strong><br>
                 1/71, Pillayar Kovil Street,<br>
                 Pazhanthandalam,<br>
                 Chennai, Tamil Nadu.
             </p>
-            <p style="font-size: 16px; margin-top: 20px;"><strong>Phone:</strong> +91 91766 63364</p>
+            <p><strong>📞 Phone:</strong> +91 91766 63364</p>
             
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
-            
-            <div class="icon">📝</div>
-            <h2>Have a Prescription?</h2>
-            <p style="color: #666;">Send us a photo of your prescription and we will keep your medicines ready!</p>
-            <a href="https://wa.me/919176663364?text=Hello%20Vasantha%20Medicals,%20I%20want%20to%20upload%20my%20prescription." target="_blank" class="prescription-btn">
-                Upload via WhatsApp 🟢
+            <h2 style="margin-top: 40px;">📝 Upload Prescription</h2>
+            <p style="font-size: 16px;">Send us a photo of your doctor's prescription via WhatsApp, and we will pack your medicines.</p>
+            <a href="https://wa.me/919176663364?text=Hello%20Vasantha%20Medicals,%20I%20want%20to%20upload%20my%20prescription." target="_blank" class="wa-btn">
+                Send via WhatsApp 🟢
             </a>
         </div>
-
-        <!-- Google Map Dummy -->
-        <div class="map-container">
-            <h3 style="text-align: center; color: #00796b; margin-top: 10px;">Find Us Here</h3>
-            <!-- Chennai Map Location -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124434.9099898031!2d80.0526749964893!3d12.934898143922114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f68b375b475%3A0xc3b8655848bb0170!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
     </div>
-
+    
     <footer>
         <p><strong>📍 Vasantha Medicals:</strong> 1/71, Pillayar Kovil Street, Pazhanthandalam, Chennai.</p>
         <p style="font-size: 14px; color: #888;">© 2026 Vasantha Medicals. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript to keep track of Cart items -->
+    <!-- கார்ட் நம்பர் அப்டேட் கோடு -->
     <script>
         function updateCartCount() {
             var cartCount = document.getElementById("cart-count");
@@ -112,6 +99,5 @@
         }
         window.onload = updateCartCount;
     </script>
-
 </body>
-</html> 
+</html>
