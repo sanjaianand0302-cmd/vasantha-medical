@@ -3,80 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Vasantha Medicals</title>
+    <title>Vasantha Medicals - Online Medical Store</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; }
-        
-        /* Top Menu Bar */
-        .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
-        .logo { font-size: 22px; font-weight: 900; color: #00796b; text-align: center; letter-spacing: 1px; }
-        .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
-        .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 15px; transition: 0.3s; }
-        .nav-menu a:hover { color: #00796b; }
-        
-        /* Hero Banner */
-        .hero { background: linear-gradient(135deg, #00796b, #004d40); color: white; text-align: center; padding: 70px 20px; }
-        .hero h1 { font-size: 42px; margin: 0; letter-spacing: 1px; }
-        .hero p { font-size: 18px; margin-top: 15px; opacity: 0.9; }
-
-        /* Categories Section */
-        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .category-card { background: white; padding: 35px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-decoration: none; color: inherit; border: 1px solid #eaeaea; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .category-card:hover { transform: translateY(-8px); border-color: #00796b; box-shadow: 0 8px 25px rgba(0,121,107,0.15); }
-        .cat-icon { font-size: 55px; margin-bottom: 15px; }
-        .cat-title { font-size: 22px; font-weight: bold; color: #00796b; margin-bottom: 10px; }
-        .cat-desc { font-size: 14px; color: #666; line-height: 1.5; }
-        
-        @media (max-width: 768px) {
-            .top-nav { flex-direction: column; text-align: center; }
-            .logo { width: 100%; margin-bottom: 5px; }
-            .hero h1 { font-size: 30px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #004d40;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: #00796b;
+            border-radius: 4px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .banner {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .cat-box {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+        .cat-box:hover {
+            transform: translateY(-5px);
+        }
+        .cat-box h3 {
+            color: #00796b;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <!-- Unified Menu Bar -->
-    <div class="top-nav">
-        <div class="logo">VASANTHA MEDICALS</div>
-        <div class="nav-menu">
-            <a href="index.html" style="color: #00796b; border-bottom: 2px solid #00796b;">Home</a>
-            <a href="index.html">Buy Medicines</a>
-            <a href="baby-care.html">Baby Care</a>
-            <a href="first-aid.html">First Aid</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="cart.html" style="color: #f57c00; font-weight: 800;">🛒 Cart (<span id="cart-count">0</span>)</a>
+    <header>
+        <h1>Vasantha Medicals</h1>
+        <p>Your Trusted Neighborhood Pharmacy</p>
+    </header>
+
+    <!-- Updated Navigation with Cart Count -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html">Buy Medicines</a>
+        <a href="baby-care.html">Baby Care</a>
+        <a href="first-aid.html">First Aid</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="cart.html" style="color: #ffcc00;">🛒 Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+
+    <div class="container">
+        <div class="banner">
+            <h2>Welcome to Our Online Medical Store</h2>
+            <p>Order medicines, baby care products, and first-aid essentials easily from home.</p>
+        </div>
+
+        <div class="categories">
+            <a href="baby-care.html" class="cat-box">
+                <h3>👶 Baby Care</h3>
+                <p>Milk powder, cerelac, soaps, and gentle baby care essentials.</p>
+            </a>
+            <a href="first-aid.html" class="cat-box">
+                <h3>🚑 First Aid</h3>
+                <p>Antiseptics, bandages, pain relief sprays, and emergency items.</p>
+            </a>
+            <a href="contact.html" class="cat-box">
+                <h3>📞 Contact Us</h3>
+                <p>Upload prescriptions and talk to us directly via WhatsApp.</p>
+            </a>
         </div>
     </div>
 
-    <!-- Banner -->
-    <div class="hero">
-        <h1>Welcome to Vasantha Medicals ⚕️</h1>
-        <p>Your trusted neighborhood pharmacy. Order online, get it delivered straight to your home!</p>
-    </div>
-
-    <!-- Quick Links -->
-    <div class="container">
-        <a href="baby-care.html" class="category-card">
-            <div class="cat-icon">👶</div>
-            <div class="cat-title">Baby Care</div>
-            <div class="cat-desc">Complete nutrition, premium skin care, and daily essentials for your little one.</div>
-        </a>
-        
-        <a href="first-aid.html" class="category-card">
-            <div class="cat-icon">🚑</div>
-            <div class="cat-title">First Aid</div>
-            <div class="cat-desc">Be prepared for emergencies with our range of quality first aid supplies.</div>
-        </a>
-
-        <a href="contact.html" class="category-card">
-            <div class="cat-icon">📞</div>
-            <div class="cat-title">Contact Us</div>
-            <div class="cat-desc">Upload prescriptions or reach out to us directly for specialized medicines.</div>
-        </a>
-    </div>
-
-    <!-- JavaScript for Cart Number Update -->
+    <!-- JavaScript to keep track of Cart items -->
     <script>
         function updateCartCount() {
             var cartCount = document.getElementById("cart-count");
