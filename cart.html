@@ -15,14 +15,19 @@
         h1 { margin: 0; font-size: 28px; }
         .container { max-width: 800px; margin: 40px auto; padding: 0 20px; min-height: 400px; }
         
-        .cart-item { display: flex; justify-content: space-between; background: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eaeaea; align-items: center; }
-        .item-name { font-weight: bold; font-size: 16px; color: #333; }
+        .cart-item { display: flex; justify-content: space-between; background: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eaeaea; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .item-name { font-weight: bold; font-size: 16px; color: #333; flex: 1; min-width: 200px; }
         
-        /* விலைக்கும் பட்டனுக்கும் நடுவுல Gap கொடுத்தாச்சு 👇 */
-        .price-section { display: flex; align-items: center; gap: 15px; } 
+        .price-section { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; } 
+        .item-price { font-weight: 900; color: #e91e63; width: 90px; text-align: right; }
         
-        .item-price { font-weight: 900; color: #e91e63; }
-        .remove-btn { background: #ff4c4c; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; }
+        /* புது பிளஸ், மைனஸ் டிசைன் 👇 */
+        .qty-controls { display: flex; align-items: center; gap: 10px; }
+        .qty-minus { background-color: #ff4d4d; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; }
+        .qty-minus:hover { background-color: #e60000; }
+        .qty-plus { background-color: #4CAF50; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; }
+        .qty-plus:hover { background-color: #388e3c; }
+        .qty-display { font-weight: bold; font-size: 16px; min-width: 20px; text-align: center; }
         
         .cart-total { text-align: right; font-size: 20px; font-weight: bold; margin-top: 20px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .checkout-btn { display: inline-block; background-color: #25D366; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 16px; margin-top: 15px; cursor: pointer; border: none; width: 100%; box-sizing: border-box; }
@@ -31,6 +36,8 @@
         @media (max-width: 768px) {
             .top-nav { flex-direction: column; text-align: center; }
             .logo { width: 100%; margin-bottom: 5px; }
+            .cart-item { flex-direction: column; align-items: flex-start; }
+            .price-section { width: 100%; justify-content: space-between; }
         }
     </style>
 </head>
@@ -69,8 +76,36 @@
                 cart = [];
             }
 
+            // பொருள்களை ஒண்ணா சேர்த்து Quantity செட் பண்ற மேஜிக் கோடு
+            var tempMap = {};
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                if (tempMap[item.name]) {
+                    tempMap[item.name].quantity += (item.quantity || 1);
+                } else {
+                    tempMap[item.name] = {
+                        name: item.name,
+                        price: item.price,
+                        quantity: item.quantity || 1
+                    };
+                }
+            }
+            
+            var newCart = [];
+            var keys = Object.keys(tempMap);
+            for (var j = 0; j < keys.length; j++) {
+                newCart.push(tempMap[keys[j]]);
+            }
+            cart = newCart;
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            // மொத்தப் பொருள்களோட எண்ணிக்கை
+            var totalItems = 0;
+            for (var k = 0; k < cart.length; k++) {
+                totalItems += cart[k].quantity;
+            }
             if (cartCount) {
-                cartCount.innerText = cart.length;
+                cartCount.innerText = totalItems;
             }
 
             var container = document.getElementById("cart-container");
@@ -87,22 +122,28 @@
             }
 
             var html = "";
-            var total = 0;
+            var totalAmount = 0;
 
             for (var i = 0; i < cart.length; i++) {
                 var item = cart[i];
-                total += item.price;
+                var itemTotal = item.price * item.quantity;
+                totalAmount += itemTotal;
+                
                 html += '<div class="cart-item">' +
                             '<div class="item-name">' + item.name + '</div>' +
                             '<div class="price-section">' +
-                                '<span class="item-price">₹ ' + item.price + '.00</span>' +
-                                '<button class="remove-btn" onclick="removeItem(' + i + ')">X</button>' +
+                                '<span class="item-price">₹ ' + itemTotal + '.00</span>' +
+                                '<div class="qty-controls">' +
+                                    '<button class="qty-minus" onclick="updateQuantity(' + i + ', -1)">-</button>' +
+                                    '<span class="qty-display">' + item.quantity + '</span>' +
+                                    '<button class="qty-plus" onclick="updateQuantity(' + i + ', 1)">+</button>' +
+                                '</div>' +
                             '</div>' +
                         '</div>';
             }
 
             html += '<div class="cart-total">' +
-                        'Total Amount: <span style="color:#e91e63;">₹ ' + total + '.00</span>' +
+                        'Total Amount: <span style="color:#e91e63;">₹ ' + totalAmount + '.00</span>' +
                         '<button class="checkout-btn" onclick="sendToWhatsApp()">Send Order to WhatsApp 🟢</button>' +
                         '<button onclick="clearCart()" style="background:transparent; border:none; color:#888; text-decoration:underline; cursor:pointer; margin-top:10px; display:block; width:100%;">Clear Cart</button>' +
                     '</div>';
@@ -110,16 +151,16 @@
             container.innerHTML = html;
         }
 
-        function removeItem(index) {
-            var cart = [];
-            try {
-                cart = JSON.parse(localStorage.getItem("cart")) || [];
-            } catch(e) {}
-            if(Array.isArray(cart)) {
-                cart.splice(index, 1);
+        function updateQuantity(index, change) {
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart[index]) {
+                cart[index].quantity += change;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
                 localStorage.setItem("cart", JSON.stringify(cart));
+                displayCart();
             }
-            displayCart();
         }
 
         function clearCart() {
@@ -128,19 +169,17 @@
         }
 
         function sendToWhatsApp() {
-            var cart = [];
-            try {
-                cart = JSON.parse(localStorage.getItem("cart")) || [];
-            } catch(e) {}
-            if(!Array.isArray(cart) || cart.length === 0) return;
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if(cart.length === 0) return;
             
             var message = "Hello Vasantha Medicals! 👋\nI would like to order:\n\n";
             var total = 0;
             
             for (var i = 0; i < cart.length; i++) {
                 var item = cart[i];
-                message += (i + 1) + ". " + item.name + " - ₹" + item.price + "\n";
-                total += item.price;
+                var itemTotal = item.price * item.quantity;
+                message += (i + 1) + ". " + item.name + " (Qty: " + item.quantity + ") - ₹" + itemTotal + "\n";
+                total += itemTotal;
             }
             
             message += "\n*Total Amount: ₹" + total + "*\n\nPlease confirm availability!";
