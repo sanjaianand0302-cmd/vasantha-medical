@@ -24,13 +24,12 @@
         .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
         .search-btn:hover { background-color: #e65100; }
         
-        /* புதுசா சேர்த்த சர்ச் ரிசல்ட் டிசைன் 👇 */
+        /* சர்ச் ரிசல்ட் டிசைன் */
         #searchResults { max-width: 750px; margin: 5px auto 0; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 10px; display: none; text-align: left; color: #333; }
         
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
         
-        /* Banner fix - Making the 3rd banner full width */
         .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; box-sizing: border-box; display: block; }
         .banner:hover { transform: translateY(-5px); }
         .b1 { background: linear-gradient(135deg, #e53935, #ef5350); }
@@ -51,7 +50,6 @@
         .float-wa:hover { transform: scale(1.1); background-color: #20b958; }
         .float-wa svg { width: 35px; height: 35px; fill: white; }
 
-        /* Media Queries - Mobile screen fixes */
         @media (max-width: 768px) {
             .top-nav { flex-direction: column; text-align: center; }
             .logo { width: 100%; margin-bottom: 5px; }
@@ -77,10 +75,10 @@
         <h1>Buy Medicines and Essentials</h1>
         <p class="tagline">Quality Medicines, Trusted Care</p>
         <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Search for Medicines... (e.g. Baby)">
+            <!-- e.g. Baby நீக்கப்பட்டது 👇 -->
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for Medicines...">
             <button class="search-btn" onclick="searchMedicine()">Search</button>
         </div>
-        <!-- ரிசல்ட் வந்து விழும் பாக்ஸ் 👇 -->
         <div id="searchResults"></div>
     </header>
 
@@ -121,9 +119,8 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
     </a>
 
-    <!-- JavaScript - புதுப்பிக்கப்பட்ட கோடுகள் 👇 -->
+    <!-- JavaScript - தேடல் வசதி -->
     <script>
-        // 1. உங்ககிட்ட இருக்குற பொருட்களின் பட்டியல் (இன்னும் நிறைய வேணும்னா இதே மாதிரி சேர்த்துக்கலாம்)
         const allProducts = [
             { name: "Lactogen Stage 1", price: "₹450", link: "baby-care.html" },
             { name: "PediaSure Health Drink", price: "₹650", link: "baby-care.html" },
@@ -134,35 +131,34 @@
             { name: "Dettol", price: "₹45", link: "first-aid.html" }
         ];
 
-        // 2. சர்ச் பட்டனை அமுக்கினா நடக்கும் வேலை
         function searchMedicine() {
             var input = document.getElementById("searchInput").value.toLowerCase();
             var resultDiv = document.getElementById("searchResults");
             
             if (input.trim() === "") {
-                alert("Please enter a medicine name to search! (உதாரணம்: Baby, Dettol)");
+                /* Alert-ல் இருந்த உதாரணம் நீக்கப்பட்டது 👇 */
+                alert("Please enter a medicine name to search!");
                 resultDiv.style.display = "none";
                 return;
             }
 
-            // பொருளை லிஸ்ட்டில் தேடுவது
             var foundProducts = allProducts.filter(item => item.name.toLowerCase().includes(input));
             
-            resultDiv.innerHTML = ""; // பழைய ரிசல்டை அழிக்க
+            resultDiv.innerHTML = "";
 
             if (foundProducts.length > 0) {
-                // பொருள் இருந்தால் வெப்சைட்டிலேயே காட்டும்
+                /* View பட்டன் மற்றும் விலை நீக்கப்பட்டது, பெயரைக் கிளிக் செய்தால் நேராக பேஜுக்குப் போகும் 👇 */
                 resultDiv.style.display = "block";
                 foundProducts.forEach(product => {
                     resultDiv.innerHTML += `
-                        <div style="padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
-                            <span><strong style="color:#00796b; font-size: 16px;">${product.name}</strong> - <span style="color: #f57c00; font-weight: bold;">${product.price}</span></span>
-                            <a href="${product.link}" style="background: #00796b; color: white; padding: 6px 15px; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold;">View</a>
+                        <div style="padding: 12px; border-bottom: 1px solid #eee;">
+                            <a href="${product.link}" style="text-decoration: none; color: #00796b; font-size: 16px; font-weight: bold; display: block;">
+                                ${product.name}
+                            </a>
                         </div>
                     `;
                 });
             } else {
-                // பொருள் இல்லைனா WhatsApp-ல் கேட்கும் வசதி
                 resultDiv.style.display = "block";
                 resultDiv.innerHTML = `
                     <div style="padding: 15px; color: #d32f2f; text-align: center;">
@@ -175,14 +171,12 @@
             }
         }
 
-        // WhatsApp-க்கு போகும் கோடு
         function sendToWhatsApp(itemName) {
             var waMessage = "Hi, I am looking for " + itemName + ". Is it available in your store?";
             var waLink = "https://wa.me/919176663364?text=" + encodeURIComponent(waMessage);
             window.open(waLink, "_blank");
         }
 
-        // கார்ட் நம்பரை ஆட்டோமேட்டிக்கா அப்டேட் செய்யும் கோடு
         function updateCartCount() {
             var cartCount = document.getElementById("cart-count");
             var cart = [];
