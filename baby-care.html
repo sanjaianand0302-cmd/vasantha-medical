@@ -224,10 +224,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         var images = document.querySelectorAll("img");
         images.forEach(function(img) {
-            // போட்டோ மேல மவுஸ் வைக்கும்போது Zoom சிம்பல் வர வைக்கும் கோடு
-            img.style.cursor = "zoom-in"; 
-            
-            // போட்டோவை கிளிக் பண்ணா பெருசாக்கும் கோடு
+           
             img.onclick = function() {
                 document.getElementById("imageModal").style.display = "flex";
                 document.getElementById("modalImage").src = this.src;
