@@ -7,7 +7,6 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; overflow-x: hidden; }
         
-        /* Top Menu Bar */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 15px; }
         .logo { font-size: 22px; font-weight: 900; color: #00796b; letter-spacing: 0.5px; text-align: center; }
         .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
@@ -23,37 +22,12 @@
         .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
         .search-btn:hover { background-color: #e65100; }
         
-        /* சர்ச் ரிசல்ட் டிசைன் */
-        #searchResults { max-width: 900px; margin: 15px auto 0; background: #f8f9fa; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); padding: 20px; display: none; text-align: left; color: #333; border: 1px solid #ddd; position: relative; z-index: 1000; }
+        /* வெறும் பெயர் மட்டும் காட்டும் பாக்ஸ் */
+        #searchResults { max-width: 750px; margin: 10px auto 0; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 10px; display: none; text-align: left; color: #333; }
         
-        .close-search { position: absolute; right: 15px; top: 15px; font-size: 20px; cursor: pointer; color: #777; font-weight: bold; }
-        .close-search:hover { color: red; }
-        
-        .search-offer-banner { background-color: #e0f2f1; color: #00695c; padding: 8px 15px; border-radius: 5px; font-size: 13px; font-weight: bold; margin-bottom: 20px; display: inline-block; width: 90%; }
-        
-        .search-results-grid { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; }
-        .search-results-grid::-webkit-scrollbar { height: 8px; }
-        .search-results-grid::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 10px; }
-        
-        .search-item-card { background: white; padding: 15px; border-radius: 8px; min-width: 160px; max-width: 180px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #eaeaea; transition: transform 0.2s; }
-        .search-item-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #00796b; }
-        
-        .search-item-card img { width: 100px; height: 120px; object-fit: contain; margin: 0 auto 10px; display: block; }
-        .search-item-title { font-size: 13px; font-weight: bold; color: #444; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .search-item-qty { font-size: 12px; color: #888; margin-bottom: 15px; }
-        .search-item-price { font-size: 16px; font-weight: 900; color: #333; }
-        
-        .search-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px; flex-wrap: wrap; gap: 10px; }
-        .view-all-btn { background: transparent; border: 1px solid #00796b; color: #00796b; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: bold; }
-        .view-all-btn:hover { background: #e0f2f1; }
-        .cart-summary { display: flex; align-items: center; gap: 10px; }
-        .view-cart-btn { background: #37474f; color: white; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; text-decoration: none;}
-        .view-cart-btn:hover { background: #263238; }
-
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
         .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; box-sizing: border-box; display: block; }
-        .banner:hover { transform: translateY(-5px); }
         .b1 { background: linear-gradient(135deg, #e53935, #ef5350); }
         .b2 { background: linear-gradient(135deg, #43a047, #66bb6a); }
         .b3 { background: linear-gradient(135deg, #fb8c00, #ffb74d); }
@@ -63,7 +37,6 @@
         h2 { color: #333; font-size: 22px; margin-bottom: 20px; display: inline-block; border-bottom: 3px solid #00796b; padding-bottom: 5px; }
         .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 40px; }
         .category-card { background: white; padding: 20px 10px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eaeaea; transition: all 0.3s ease; cursor: pointer; height: 100%; box-sizing: border-box; }
-        .category-card:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: #00796b; transform: translateY(-3px); }
         .icon { font-size: 35px; margin-bottom: 12px; }
         .category-card h4 { margin: 0; color: #444; font-size: 14px; font-weight: 600; }
         
@@ -91,6 +64,7 @@
             <button class="search-btn" onclick="searchMedicine()">Search</button>
         </div>
         
+        <!-- ரிசல்ட் பெயர் மட்டும் வரும் இடம் -->
         <div id="searchResults"></div>
     </header>
 
@@ -119,17 +93,17 @@
     </footer>
 
     <script>
-        // போட்டோ பாதங்களுடன் கூடிய முழுமையான பட்டியல் 👇
+        // வெறும் பெயர் மற்றும் விலை மட்டும் உள்ள பட்டியல்
         const allProducts = [
-            { name: "Baby Shampoo", price: "₹149", link: "baby-care.html", image: "./shampoo-1.jpeg", qty: "100 ml" },
-            { name: "Baby Shampoo (Large)", price: "₹250", link: "baby-care.html", image: "./shampoo-2.jpeg", qty: "200 ml" },
-            { name: "Baby Soap", price: "₹45", link: "baby-care.html", image: "./babysoap-1.jpeg", qty: "75g" },
-            { name: "Nestle Cerelac", price: "₹300", link: "baby-care.html", image: "./cerelac-1.jpeg", qty: "300g" },
-            { name: "Nestle Lactogen", price: "₹450", link: "baby-care.html", image: "./lactogen-1.jpeg", qty: "400g" },
-            { name: "PediaSure Health Drink", price: "₹650", link: "baby-care.html", image: "./pediasure-1.jpeg", qty: "400g" },
-            { name: "Baby Hair Oil", price: "₹120", link: "baby-care.html", image: "./hairoil-1.jpeg", qty: "100 ml" },
-            { name: "Baby Lotion", price: "₹150", link: "baby-care.html", image: "./lotion-1.jpeg", qty: "200 ml" },
-            { name: "Massage Oil", price: "₹180", link: "baby-care.html", image: "./massageoil-1.jpeg", qty: "100 ml" }
+            { name: "Baby Shampoo", price: "₹149", link: "baby-care.html" },
+            { name: "Baby Shampoo (Large)", price: "₹250", link: "baby-care.html" },
+            { name: "Baby Soap", price: "₹45", link: "baby-care.html" },
+            { name: "Nestle Cerelac", price: "₹300", link: "baby-care.html" },
+            { name: "Nestle Lactogen", price: "₹450", link: "baby-care.html" },
+            { name: "PediaSure Health Drink", price: "₹650", link: "baby-care.html" },
+            { name: "Baby Hair Oil", price: "₹120", link: "baby-care.html" },
+            { name: "Baby Lotion", price: "₹150", link: "baby-care.html" },
+            { name: "Massage Oil", price: "₹180", link: "baby-care.html" }
         ];
 
         function searchMedicine() {
@@ -144,48 +118,25 @@
 
             var foundProducts = allProducts.filter(item => item.name.toLowerCase().includes(input));
             
+            resultDiv.innerHTML = "";
+
             if (foundProducts.length > 0) {
-                let cardsHtml = '';
+                resultDiv.style.display = "block";
                 foundProducts.forEach(product => {
-                    cardsHtml += `
-                        <a href="${product.link}" class="search-item-card">
-                            <img src="${product.image}" alt="Product Image">
-                            <div>
-                                <div class="search-item-title">${product.name}</div>
-                                <div class="search-item-qty">${product.qty}</div>
-                            </div>
-                            <div class="search-item-price">${product.price}</div>
-                        </a>
+                    resultDiv.innerHTML += `
+                        <div style="padding: 12px; border-bottom: 1px solid #eee;">
+                            <a href="${product.link}" style="text-decoration: none; color: #00796b; font-size: 16px; font-weight: bold; display: block;">
+                                ${product.name} - <span style="color: #f57c00;">${product.price}</span>
+                            </a>
+                        </div>
                     `;
                 });
-
-                resultDiv.style.display = "block";
-                resultDiv.innerHTML = `
-                    <span class="close-search" onclick="document.getElementById('searchResults').style.display='none'">&times;</span>
-                    
-                    <div class="search-offer-banner">
-                        💳 Extra 10% Off with Bank Offers
-                    </div>
-                    
-                    <div class="search-results-grid">
-                        ${cardsHtml}
-                    </div>
-                    
-                    <div class="search-footer">
-                        <button class="view-all-btn">View All Results</button>
-                        <div class="cart-summary">
-                            <span style="font-size: 20px;">🛒</span> 
-                            <a href="cart.html" class="view-cart-btn">View Cart</a>
-                        </div>
-                    </div>
-                `;
             } else {
                 resultDiv.style.display = "block";
                 resultDiv.innerHTML = `
-                    <span class="close-search" onclick="document.getElementById('searchResults').style.display='none'">&times;</span>
                     <div style="padding: 15px; color: #d32f2f; text-align: center;">
                         <strong>மன்னிக்கவும், இந்த பொருள் ஆன்லைனில் கிடைக்கவில்லை.</strong> <br><br>
-                        <button onclick="sendToWhatsApp('${input}')" style="background: #25d366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">
+                        <button onclick="sendToWhatsApp('${input}')" style="background: #25d366; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 8px;">
                             WhatsApp-ல் விசாரிக்கவும்
                         </button>
                     </div>
