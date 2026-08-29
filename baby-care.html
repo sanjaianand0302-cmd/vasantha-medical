@@ -214,5 +214,26 @@
         window.onload = updateCartCount;
     </script>
 
+    <!-- Image Zoom Popup Magic -->
+<div id="imageModal" onclick="this.style.display='none'" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+    <span style="position:absolute; top:20px; right:35px; color:white; font-size:40px; font-weight:bold; cursor:pointer;">&times;</span>
+    <img id="modalImage" style="max-width:90%; max-height:90%; background-color:white; padding:15px; border-radius:10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var images = document.querySelectorAll("img");
+        images.forEach(function(img) {
+            // போட்டோ மேல மவுஸ் வைக்கும்போது Zoom சிம்பல் வர வைக்கும் கோடு
+            img.style.cursor = "zoom-in"; 
+            
+            // போட்டோவை கிளிக் பண்ணா பெருசாக்கும் கோடு
+            img.onclick = function() {
+                document.getElementById("imageModal").style.display = "flex";
+                document.getElementById("modalImage").src = this.src;
+            }
+        });
+    });
+</script>
 </body>
 </html>
