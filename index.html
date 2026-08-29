@@ -7,29 +7,51 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f9f9; color: #333; overflow-x: hidden; }
         
-        /* Top Menu Bar - Fixed for Mobile */
+        /* Top Menu Bar */
         .top-nav { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 15px; }
         .logo { font-size: 22px; font-weight: 900; color: #00796b; letter-spacing: 0.5px; text-align: center; }
         .nav-menu { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
         .nav-menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; transition: color 0.3s; }
         .nav-menu a:hover { color: #00796b; }
-        .login-btn { border: 1px solid #00796b; color: #00796b !important; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
         
-        header { background: #00796b; color: white; text-align: center; padding: 50px 20px; }
+        header { background: #00796b; color: white; text-align: center; padding: 50px 20px; position: relative; }
         h1 { margin: 0; font-size: 32px; letter-spacing: 0.5px; }
         .tagline { font-size: 16px; opacity: 0.9; margin-top: 10px; }
         
         .search-container { max-width: 750px; margin: 25px auto 0; display: flex; background: white; border-radius: 8px; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); box-sizing: border-box; }
-        .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; width: 100%; box-sizing: border-box; }
+        .search-input { flex: 1; padding: 12px 15px; border: none; font-size: 16px; outline: none; background: transparent; width: 100%; box-sizing: border-box; color: #333; }
         .search-btn { background-color: #f57c00; color: white; border: none; border-radius: 5px; padding: 10px 25px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s; }
         .search-btn:hover { background-color: #e65100; }
         
         /* சர்ச் ரிசல்ட் டிசைன் */
-        #searchResults { max-width: 750px; margin: 5px auto 0; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 10px; display: none; text-align: left; color: #333; }
+        #searchResults { max-width: 900px; margin: 15px auto 0; background: #f8f9fa; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); padding: 20px; display: none; text-align: left; color: #333; border: 1px solid #ddd; position: relative; z-index: 1000; }
         
+        .close-search { position: absolute; right: 15px; top: 15px; font-size: 20px; cursor: pointer; color: #777; font-weight: bold; }
+        .close-search:hover { color: red; }
+        
+        .search-offer-banner { background-color: #e0f2f1; color: #00695c; padding: 8px 15px; border-radius: 5px; font-size: 13px; font-weight: bold; margin-bottom: 20px; display: inline-block; width: 90%; }
+        
+        .search-results-grid { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; }
+        .search-results-grid::-webkit-scrollbar { height: 8px; }
+        .search-results-grid::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 10px; }
+        
+        .search-item-card { background: white; padding: 15px; border-radius: 8px; min-width: 160px; max-width: 180px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #eaeaea; transition: transform 0.2s; }
+        .search-item-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #00796b; }
+        
+        .search-item-card img { width: 100px; height: 120px; object-fit: contain; margin: 0 auto 10px; display: block; }
+        .search-item-title { font-size: 13px; font-weight: bold; color: #444; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .search-item-qty { font-size: 12px; color: #888; margin-bottom: 15px; }
+        .search-item-price { font-size: 16px; font-weight: 900; color: #333; }
+        
+        .search-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px; flex-wrap: wrap; gap: 10px; }
+        .view-all-btn { background: transparent; border: 1px solid #00796b; color: #00796b; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: bold; }
+        .view-all-btn:hover { background: #e0f2f1; }
+        .cart-summary { display: flex; align-items: center; gap: 10px; }
+        .view-cart-btn { background: #37474f; color: white; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; text-decoration: none;}
+        .view-cart-btn:hover { background: #263238; }
+
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         .banners { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
-        
         .banner { flex: 1; min-width: 280px; padding: 25px; border-radius: 10px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; box-sizing: border-box; display: block; }
         .banner:hover { transform: translateY(-5px); }
         .b1 { background: linear-gradient(135deg, #e53935, #ef5350); }
@@ -46,22 +68,12 @@
         .category-card h4 { margin: 0; color: #444; font-size: 14px; font-weight: 600; }
         
         footer { text-align: center; margin-top: 50px; padding: 35px 20px; background: white; border-top: 1px solid #eaeaea; color: #555; }
-        .float-wa { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 0px 4px 15px rgba(0,0,0,0.2); z-index: 100; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; text-decoration: none; }
-        .float-wa:hover { transform: scale(1.1); background-color: #20b958; }
-        .float-wa svg { width: 35px; height: 35px; fill: white; }
-
-        @media (max-width: 768px) {
-            .top-nav { flex-direction: column; text-align: center; }
-            .logo { width: 100%; margin-bottom: 5px; }
-            .float-wa { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-            .float-wa svg { width: 30px; height: 30px; }
-        }
     </style>
 </head>
 <body>
     <div class="top-nav">
-        <div class="logo" style="font-size: 22px; font-weight: 900; color: #00796b; letter-spacing: 0.5px; text-align: center;">VASANTHA MEDICALS</div>
-        <div class="nav-menu" style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center;">
+        <div class="logo">VASANTHA MEDICALS</div>
+        <div class="nav-menu">
             <a href="index.html">Home</a>
             <a href="index.html">Buy Medicines</a>
             <a href="baby-care.html">Baby Care</a>
@@ -75,10 +87,10 @@
         <h1>Buy Medicines and Essentials</h1>
         <p class="tagline">Quality Medicines, Trusted Care</p>
         <div class="search-container">
-            <!-- e.g. Baby நீக்கப்பட்டது 👇 -->
-            <input type="text" id="searchInput" class="search-input" placeholder="Search for Medicines...">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for Medicines... (e.g., Baby, Shampoo)">
             <button class="search-btn" onclick="searchMedicine()">Search</button>
         </div>
+        
         <div id="searchResults"></div>
     </header>
 
@@ -86,7 +98,6 @@
         <div class="banners">
             <div class="banner b1"><h3>FLAT 10% OFF</h3><p>On all allopathic medicines</p></div>
             <div class="banner b2"><h3>FREE DELIVERY</h3><p>For orders above ₹500</p></div>
-            
             <a href="baby-care.html" class="banner b3" style="text-decoration: none;">
                 <h3>BABY CARE SPECIAL</h3><p>Extra discounts on diapers</p>
             </a>
@@ -94,18 +105,10 @@
         
         <h2>Browse by Health Conditions</h2>
         <div class="categories">
-            <a href="diabetes-care.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="category-card"><div class="icon">🩸</div><h4>Diabetes Care</h4></div>
-            </a>
-            <a href="cardiac-care.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="category-card"><div class="icon">❤️</div><h4>Cardiac Care</h4></div>
-            </a>
-            <a href="baby-care.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="category-card"><div class="icon">👶</div><h4>Baby & Mom</h4></div>
-            </a>
-            <a href="first-aid.html" style="text-decoration: none; color: inherit; display: block;">
-                <div class="category-card"><div class="icon">🩹</div><h4>First Aid</h4></div>
-            </a>
+            <a href="diabetes-care.html" style="text-decoration: none; color: inherit; display: block;"><div class="category-card"><div class="icon">🩸</div><h4>Diabetes Care</h4></div></a>
+            <a href="cardiac-care.html" style="text-decoration: none; color: inherit; display: block;"><div class="category-card"><div class="icon">❤️</div><h4>Cardiac Care</h4></div></a>
+            <a href="baby-care.html" style="text-decoration: none; color: inherit; display: block;"><div class="category-card"><div class="icon">👶</div><h4>Baby & Mom</h4></div></a>
+            <a href="first-aid.html" style="text-decoration: none; color: inherit; display: block;"><div class="category-card"><div class="icon">🩹</div><h4>First Aid</h4></div></a>
             <div class="category-card"><div class="icon">💊</div><h4>Supplements</h4></div>
         </div>
     </div>
@@ -115,20 +118,18 @@
         <p style="font-size: 14px; color: #888;">© 2026 Vasantha Medicals. All rights reserved.</p>
     </footer>
 
-    <a href="https://wa.me/919176663364" target="_blank" class="float-wa">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-    </a>
-
-    <!-- JavaScript - தேடல் வசதி -->
     <script>
+        // உங்கள் GitHub-ல் உள்ள ஒரிஜினல் படங்களின் பெயர்களை இங்கு இணைத்துள்ளேன் 👇
         const allProducts = [
-            { name: "Lactogen Stage 1", price: "₹450", link: "baby-care.html" },
-            { name: "PediaSure Health Drink", price: "₹650", link: "baby-care.html" },
-            { name: "Johnson's Baby Hair Oil", price: "₹120", link: "baby-care.html" },
-            { name: "Himalaya Baby Lotion", price: "₹150", link: "baby-care.html" },
-            { name: "Baby Shampoo", price: "₹62", link: "baby-care.html" },
-            { name: "Paracetamol", price: "₹30", link: "buy-medicines.html" },
-            { name: "Dettol", price: "₹45", link: "first-aid.html" }
+            { name: "Baby Shampoo", price: "₹149", link: "baby-care.html", image: "shampoo-1.jpeg", qty: "100 ml" },
+            { name: "Baby Shampoo (Large)", price: "₹250", link: "baby-care.html", image: "shampoo-2.jpeg", qty: "200 ml" },
+            { name: "Baby Soap", price: "₹45", link: "baby-care.html", image: "babysoap-1.jpeg", qty: "75g" },
+            { name: "Nestle Cerelac", price: "₹300", link: "baby-care.html", image: "cerelac-1.jpeg", qty: "300g" },
+            { name: "Nestle Lactogen", price: "₹450", link: "baby-care.html", image: "lactogen-1.jpeg", qty: "400g" },
+            { name: "PediaSure Health Drink", price: "₹650", link: "baby-care.html", image: "pediasure-1.jpeg", qty: "400g" },
+            { name: "Baby Hair Oil", price: "₹120", link: "baby-care.html", image: "hairoil-1.jpeg", qty: "100 ml" },
+            { name: "Baby Lotion", price: "₹150", link: "baby-care.html", image: "lotion-1.jpeg", qty: "200 ml" },
+            { name: "Massage Oil", price: "₹180", link: "baby-care.html", image: "massageoil-1.jpeg", qty: "100 ml" }
         ];
 
         function searchMedicine() {
@@ -136,7 +137,6 @@
             var resultDiv = document.getElementById("searchResults");
             
             if (input.trim() === "") {
-                /* Alert-ல் இருந்த உதாரணம் நீக்கப்பட்டது 👇 */
                 alert("Please enter a medicine name to search!");
                 resultDiv.style.display = "none";
                 return;
@@ -144,26 +144,48 @@
 
             var foundProducts = allProducts.filter(item => item.name.toLowerCase().includes(input));
             
-            resultDiv.innerHTML = "";
-
             if (foundProducts.length > 0) {
-                /* View பட்டன் மற்றும் விலை நீக்கப்பட்டது, பெயரைக் கிளிக் செய்தால் நேராக பேஜுக்குப் போகும் 👇 */
-                resultDiv.style.display = "block";
+                let cardsHtml = '';
                 foundProducts.forEach(product => {
-                    resultDiv.innerHTML += `
-                        <div style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <a href="${product.link}" style="text-decoration: none; color: #00796b; font-size: 16px; font-weight: bold; display: block;">
-                                ${product.name}
-                            </a>
-                        </div>
+                    cardsHtml += `
+                        <a href="${product.link}" class="search-item-card">
+                            <img src="${product.image}" alt="Product Image">
+                            <div>
+                                <div class="search-item-title">${product.name}</div>
+                                <div class="search-item-qty">${product.qty}</div>
+                            </div>
+                            <div class="search-item-price">${product.price}</div>
+                        </a>
                     `;
                 });
+
+                resultDiv.style.display = "block";
+                resultDiv.innerHTML = `
+                    <span class="close-search" onclick="document.getElementById('searchResults').style.display='none'">&times;</span>
+                    
+                    <div class="search-offer-banner">
+                        💳 Extra 10% Off with Bank Offers
+                    </div>
+                    
+                    <div class="search-results-grid">
+                        ${cardsHtml}
+                    </div>
+                    
+                    <div class="search-footer">
+                        <button class="view-all-btn">View All Results</button>
+                        <div class="cart-summary">
+                            <span style="font-size: 20px;">🛒</span> 
+                            <a href="cart.html" class="view-cart-btn">View Cart</a>
+                        </div>
+                    </div>
+                `;
             } else {
                 resultDiv.style.display = "block";
                 resultDiv.innerHTML = `
+                    <span class="close-search" onclick="document.getElementById('searchResults').style.display='none'">&times;</span>
                     <div style="padding: 15px; color: #d32f2f; text-align: center;">
                         <strong>மன்னிக்கவும், இந்த பொருள் ஆன்லைனில் கிடைக்கவில்லை.</strong> <br><br>
-                        <button onclick="sendToWhatsApp('${input}')" style="background: #25d366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: bold; margin-top: 5px;">
+                        <button onclick="sendToWhatsApp('${input}')" style="background: #25d366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">
                             WhatsApp-ல் விசாரிக்கவும்
                         </button>
                     </div>
@@ -186,9 +208,7 @@
                     cart = JSON.parse(storedData);
                     if (!Array.isArray(cart)) cart = [];
                 }
-            } catch (error) {
-                cart = [];
-            }
+            } catch (error) {}
             if (cartCount) {
                 cartCount.innerText = cart.length;
             }
