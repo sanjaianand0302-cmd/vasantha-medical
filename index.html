@@ -147,15 +147,50 @@
     </a>
 
     <script>
-        // பழைய Search WhatsApp Function
+        // உங்கள் கடையில் உள்ள பொருட்களின் பட்டியல் (மேலே வைக்கப்பட்டுள்ளது)
+        const products = [
+            "Nestle NAN PRO Stage 1 (Up to 6 Months)",
+            "Nestle NAN PRO Stage 2 (After 6 Months)",
+            "Nestle NAN PRO Stage 3 (After 12 Months)",
+            "Nestle Lactogen PRO 1 (Stage 1)",
+            "Nestle Cerelac Wheat (From 6 Months)",
+            "Nestle Cerelac Rice (From 6 Months)",
+            "Nestle Cerelac Wheat Apple (From 6 Months)",
+            "Nestle Cerelac Wheat-Rice Mixed Veg (10m+)",
+            "Nestle Cerelac Wheat-Rice Mixed Fruit (10m+)",
+            "Nestle Cerelac Multigrain Dal Veg (12m+)",
+            "Nestle Cerelac Multigrain & Fruits (12m+)",
+            "PediaSure Kids Nutrition (Complete Growth)",
+            "Johnson's Baby Soap (75g)",
+            "Johnson's Baby Powder (50g)",
+            "Johnson's Baby Powder (100g)",
+            "Johnson's Baby Lotion (50ml)",
+            "Johnson's Baby Hair Oil with Avocado (60ml)",
+            "Johnson's Baby Shampoo with Aloe (50ml)",
+            "Himalaya Gentle Baby Shampoo",
+            "Himalaya Baby Massage Oil (100ml)",
+            "Himalaya Baby Hair Oil (Coconut & Amla)"
+        ];
+
+        // --- புதிய Search Function: வாட்ஸ்அப் போகாமல் Baby Care பேஜுக்கு செல்ல --- 👇
         function searchMedicine() {
             var input = document.getElementById("searchInput").value;
+            
             if (input.trim() !== "") {
-                var waMessage = "Hi, I am looking for " + input + ". Is it available in your store?";
-                var waLink = "https://wa.me/919176663364?text=" + encodeURIComponent(waMessage);
-                window.open(waLink, "_blank");
+                // நாம் டைப் செய்த பொருள் லிஸ்டில் இருக்கிறதா என செக் செய்ய
+                var isProductFound = products.some(product => 
+                    product.toLowerCase() === input.toLowerCase()
+                );
+                
+                if (isProductFound) {
+                    // பொருள் இருந்தால் நேராக baby-care.html பேஜுக்கு போகும்
+                    window.location.href = "baby-care.html";
+                } else {
+                    // பொருள் இல்லை என்றால் அலர்ட் காட்டும்
+                    alert("நீங்கள் தேடும் '" + input + "' தற்போது கிடைக்கவில்லை.");
+                }
             } else {
-                alert("Please enter a medicine name to search! (உதாரணம்: Dettol, Paracetamol)");
+                alert("Please enter a product name to search!");
             }
         }
 
@@ -178,33 +213,7 @@
         }
         window.onload = updateCartCount;
 
-        // --- புதுசா சேர்த்த JavaScript: சர்ச் பாக்ஸில் Type செய்யும் போது லிஸ்ட் வர --- 👇
-        
-        // உங்கள் கடையில் உள்ள பொருட்களின் பட்டியல் (இங்கு நீங்கள் மேலும் பல பொருட்களைச் சேர்க்கலாம்)
-        const products = [
-    "Nestle NAN PRO Stage 1 (Up to 6 Months)",
-    "Nestle NAN PRO Stage 2 (After 6 Months)",
-    "Nestle NAN PRO Stage 3 (After 12 Months)",
-    "Nestle Lactogen PRO 1 (Stage 1)",
-    "Nestle Cerelac Wheat (From 6 Months)",
-    "Nestle Cerelac Rice (From 6 Months)",
-    "Nestle Cerelac Wheat Apple (From 6 Months)",
-    "Nestle Cerelac Wheat-Rice Mixed Veg (10m+)",
-    "Nestle Cerelac Wheat-Rice Mixed Fruit (10m+)",
-    "Nestle Cerelac Multigrain Dal Veg (12m+)",
-    "Nestle Cerelac Multigrain & Fruits (12m+)",
-    "PediaSure Kids Nutrition (Complete Growth)",
-    "Johnson's Baby Soap (75g)",
-    "Johnson's Baby Powder (50g)",
-    "Johnson's Baby Powder (100g)",
-    "Johnson's Baby Lotion (50ml)",
-    "Johnson's Baby Hair Oil with Avocado (60ml)",
-    "Johnson's Baby Shampoo with Aloe (50ml)",
-    "Himalaya Gentle Baby Shampoo",
-    "Himalaya Baby Massage Oil (100ml)",
-    "Himalaya Baby Hair Oil (Coconut & Amla)"
-];
-
+        // --- சர்ச் பாக்ஸில் Type செய்யும் போது லிஸ்ட் வர --- 👇
         const searchInput = document.getElementById('searchInput');
         const suggestionBox = document.getElementById('suggestionBox');
 
