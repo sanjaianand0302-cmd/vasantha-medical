@@ -177,16 +177,14 @@
             var input = document.getElementById("searchInput").value;
             
             if (input.trim() !== "") {
-                // நாம் டைப் செய்த பொருள் லிஸ்டில் இருக்கிறதா என செக் செய்ய
                 var isProductFound = products.some(product => 
                     product.toLowerCase() === input.toLowerCase()
                 );
                 
                 if (isProductFound) {
-                    // பொருள் இருந்தால் நேராக baby-care.html பேஜுக்கு போகும்
-                    window.location.href = "baby-care.html";
+                    // பொருளோட பேரை baby-care பேஜுக்கு URL வழியா அனுப்புறோம் 👇
+                    window.location.href = "baby-care.html?item=" + encodeURIComponent(input);
                 } else {
-                    // பொருள் இல்லை என்றால் அலர்ட் காட்டும்
                     alert("நீங்கள் தேடும் '" + input + "' தற்போது கிடைக்கவில்லை.");
                 }
             } else {
