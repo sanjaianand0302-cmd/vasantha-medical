@@ -33,6 +33,22 @@
         .buy-btn { display: inline-block; background-color: #f57c00; color: white; padding: 10px 15px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 13px; transition: background 0.3s; box-shadow: 0 4px 10px rgba(245,124,0,0.3); border: none; cursor: pointer; width: 100%; box-sizing: border-box; }
         .buy-btn:hover { background-color: #e65100; }
 
+        /* 🌟 புதுசா சேர்த்த CSS - Highlight Effect 🌟 */
+        .highlight-card {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 25px rgba(233, 30, 99, 0.7) !important;
+            border: 3px solid #e91e63 !important;
+            z-index: 10;
+            position: relative;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(233, 30, 99, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(233, 30, 99, 0.9); }
+            100% { box-shadow: 0 0 10px rgba(233, 30, 99, 0.4); }
+        }
+
         @media (max-width: 768px) {
             .top-nav { flex-direction: column; text-align: center; gap: 8px; padding: 10px; }
             .logo { font-size: 20px; margin-bottom: 5px; }
@@ -214,7 +230,7 @@
         window.onload = updateCartCount;
     </script>
 
-    <!-- Image Zoom Popup Magic -->
+    <!-- Image Zoom Popup Magic & Search Highlight Magic -->
 <div id="imageModal" onclick="this.style.display='none'" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
     <span style="position:absolute; top:20px; right:35px; color:white; font-size:40px; font-weight:bold; cursor:pointer;">&times;</span>
     <img id="modalImage" style="max-width:90%; max-height:90%; background-color:white; padding:15px; border-radius:10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
@@ -222,14 +238,47 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // Image Zoom Logic
         var images = document.querySelectorAll("img");
         images.forEach(function(img) {
-           
             img.onclick = function() {
                 document.getElementById("imageModal").style.display = "flex";
                 document.getElementById("modalImage").src = this.src;
             }
         });
+
+        // 🌟 புதுசா சேர்த்த JavaScript - Scroll & Highlight Logic 🌟
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchedItem = urlParams.get('item');
+
+        if (searchedItem) {
+            const productTitles = document.querySelectorAll('.product-title');
+            let query = searchedItem.toLowerCase().trim();
+
+            for (let title of productTitles) {
+                // HTML-ல் உள்ள எழுத்துகளை மட்டும் எடுத்து தேடும்
+                let plainTitle = title.innerText.replace(/\s+/g, ' ').toLowerCase().trim();
+
+                if (plainTitle.includes(query)) {
+                    let card = title.closest('.product-card');
+                    
+                    setTimeout(() => {
+                        // அந்த பொருளுக்கு நேரா ஸ்க்ரோல் பண்ணும்
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // ஹைலைட் கலர் கொடுக்கும் (CSS class)
+                        card.classList.add('highlight-card');
+
+                        // 4 செகண்ட் கழித்து அந்த ஹைலைட்டை எடுத்துவிடும்
+                        setTimeout(() => {
+                            card.classList.remove('highlight-card');
+                        }, 4000);
+                    }, 300); // பேஜ் லோட் ஆனதும் கொஞ்சம் டைம் எடுத்து ஒர்க் ஆகும்
+                    
+                    break; 
+                }
+            }
+        }
     });
 </script>
 </body>
